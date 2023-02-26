@@ -1,4 +1,4 @@
-package com.mishop.main.controller;
+package com.mishop.main.controller.rest;
 
 import com.mishop.main.model.Producto;
 import com.mishop.main.repository.ProductoRepository;
@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-public class ProductoRestController {
+public class ProductoRest {
     private static final String BASE_URL = "/api/producto";
     private final ProductoRepository productoRepository;
 
-    public ProductoRestController(ProductoRepository productoRepository) {
+    public ProductoRest(ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 

@@ -1,4 +1,4 @@
-package com.mishop.main.controller;
+package com.mishop.main.controller.rest;
 
 import java.util.List;
 import java.util.Map;
@@ -14,11 +14,11 @@ import com.mishop.main.model.Categoria;
 import com.mishop.main.repository.CategoriaRepository;
 
 @RestController
-public class CategoriaRestController {
+public class CategoriaRest {
     private static final String BASE_URL = "/api/categoria";
     private final CategoriaRepository categoriaRepository;
     
-    public CategoriaRestController(CategoriaRepository categoriaRepository) {
+    public CategoriaRest(CategoriaRepository categoriaRepository) {
         this.categoriaRepository = categoriaRepository;
     }
 
