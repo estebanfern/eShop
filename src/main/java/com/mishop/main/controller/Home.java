@@ -10,4 +10,9 @@ public class Home {
         return "home";
     }
     
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
 }
