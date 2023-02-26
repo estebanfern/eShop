@@ -9,9 +9,5 @@ public class Home {
     public String home(){
         return "home";
     }
-
-    @GetMapping("/productos")
-    public String productos(){
-        return "productos";
-    }
+    
 }
