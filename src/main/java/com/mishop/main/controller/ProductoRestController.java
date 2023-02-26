@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -27,10 +26,7 @@ public class ProductoRestController {
     @GetMapping(BASE_URL + "/{id}")
     public Producto getProducto(@PathVariable Integer id){
         Optional<Producto> producto = productoRepository.findById(id);
-        if (producto.isPresent()) {
-            return producto.get();
-        }
-        return null;
+        return producto.orElse(null);
     }
 
     @PostMapping(BASE_URL + "/save")
