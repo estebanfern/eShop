@@ -3,6 +3,8 @@ package com.mishop.main.controller;
 import com.mishop.main.model.Producto;
 import com.mishop.main.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(BASE_URL)
     public String mainPage(Model model){
         List<Producto> productos = productoService.findAll();
