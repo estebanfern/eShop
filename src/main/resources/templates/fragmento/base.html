@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-                th:fragment="base" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+                th:fragment="base">
 
 
 <head>
@@ -41,19 +41,22 @@
             <hr class="sidebar-divider my-0">
             <!-- Items del navbar -->
             <li class="nav-item active">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/inicio">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Inicio</span></a>
                     <hr class="sidebar-divider">
             </li>
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                This content is only shown to administrators.
+                <li class="nav-item active">
+                    <a class="nav-link" href="/productos">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Productos</span></a>
+                        <hr class="sidebar-divider">
+                    </li>
+            </div>
             <li class="nav-item active">
-                <a class="nav-link" href="/productos">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Productos</span></a>
-                    <hr class="sidebar-divider">
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/pedidos">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pedido</span></a>
                     <hr class="sidebar-divider">

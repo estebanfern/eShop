@@ -5,9 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Home {
-    @GetMapping("/home")
+
+    @GetMapping("/inicio")
     public String home(){
-        return "home";
+        return "inicio";
+    }
+
+    @GetMapping("/")
+    public String inicio(){
+        return "inicio";
     }
     
     @GetMapping("/login")
@@ -15,4 +21,9 @@ public class Home {
         return "login";
     }
 
+
+    @GetMapping("/pedidos")
+    public String pedidos(){
+        return "pedidos";
+    }
 }

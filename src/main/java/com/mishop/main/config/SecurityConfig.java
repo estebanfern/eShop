@@ -1,19 +1,11 @@
 package com.mishop.main.config;
 
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,15 +24,16 @@ public class SecurityConfig{
 
         .authorizeHttpRequests()
             .requestMatchers("/", "/home", "/index", "/registro", "**css/**","**js/**","**img/**","/foto-comentario").permitAll()
-            .requestMatchers("/", "/registro", "/verificacion", "/login",
+            .requestMatchers( "/registro", "/verificacion", "/login",
                             "/css/**","/js/**","/img/**").permitAll()
-            .anyRequest().hasRole("ADMIN")
+            .requestMatchers("/productos").hasRole("ADMIN")
+            .anyRequest().authenticated()
             .and()
         .formLogin()
             .usernameParameter("username")
             .passwordParameter("password")
             .loginPage("/login")
-            .defaultSuccessUrl("/home", true)
+            .defaultSuccessUrl("/inicio", true)
             .permitAll();
 
 
