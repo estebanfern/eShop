@@ -31,16 +31,16 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Iniciar Sesión</h1>
                     </div>
-                    <form id="myForm" class="user needs-validation" action="/" method="get">
+                    <form id="myForm" class="user needs-validation" th:action="@{/login}" method="post">
                         <div class="form-group">
-                            <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp"
-                            placeholder="Ingrese su correo electronico..." required />
+                            <label for="email" class="form-label">Usuario</label>
+                            <input type="text" class="form-control form-control-user" id="username" name="username"
+                            placeholder="Ingrese su usuario" required />
                             <small id="emailError" class="form-text text-danger text-center d-none">Este campo es obligatorio</small>
                         </div>
                         <div class="form-group">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control form-control-user" id="password"
+                            <input type="password" class="form-control form-control-user" id="password" name="password"
                             placeholder="Contraseña" required />
                             <small id="passwordError" class="form-text text-danger text-center d-none">Este campo es obligatorio</small>
                         </div>

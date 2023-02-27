@@ -18,7 +18,7 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @GetMapping(BASE_URL)
     public String mainPage(Model model){
         List<Producto> productos = productoService.findAll();

@@ -1,13 +1,19 @@
 package com.mishop.main.config;
 
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -17,19 +23,60 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
-public class SecurityConfig {
+public class SecurityConfig{
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf().disable()
-            .authorizeRequests()
-            .requestMatchers(HttpMethod.GET).permitAll()
+        http.csrf().disable()
+
+        .authorizeHttpRequests()
+            .requestMatchers("/", "/home", "/index", "/registro", "**css/**","**js/**","**img/**","/foto-comentario").permitAll()
+            .requestMatchers("/", "/registro", "/verificacion", "/login",
+                            "/css/**","/js/**","/img/**").permitAll()
+            .anyRequest().hasRole("ADMIN")
             .and()
-            .httpBasic();
+        .formLogin()
+            .usernameParameter("username")
+            .passwordParameter("password")
+            .loginPage("/login")
+            .defaultSuccessUrl("/home", true)
+            .permitAll();
+
+
         return http.build();
     }
+
+    // @Bean
+    // public UserDetailsService userDetailsService() {
+    //     UserDetails user = User.withDefaultPasswordEncoder()
+    //         .username("user")
+    //         .password("password")
+    //         .roles("ADMIN")
+    //         .build();
+    //     return new InMemoryUserDetailsManager(user);
+    // }
+
+
+    // @Bean
+    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    //     http
+    //         .csrf().disable()
+    //         .authorizeHttpRequests(authorize -> authorize
+    //                 .requestMatchers("/").permitAll()
+    //                 .requestMatchers("/login").permitAll()
+    //                 //.requestMatchers(HttpMethod.GET, "/api/producto/list").permitAll()
+    //                 //.requestMatchers(HttpMethod.GET, "/api/producto/{id}").permitAll()
+    //                 //.requestMatchers(HttpMethod.POST, "/api/producto/save").permitAll()
+    //                 //.requestMatchers(HttpMethod.DELETE, "/api/producto/delete/{id}").permitAll()
+    //                 //.requestMatchers(HttpMethod.GET, "/productos").hasRole("ADMIN")
+    //                 .anyRequest().authenticated() // any other request must be authenticated
+    //                 )
+    //         .formLogin(loginPanel -> loginPanel.loginPage("/login").permitAll())
+    //                 //.logout(logout -> logout.logoutUrl("/logout").permitAll())
+    //         .httpBasic();
+    //     return http.build();
+    // }
     
 
     @Bean
