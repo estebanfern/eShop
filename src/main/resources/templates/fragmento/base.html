@@ -46,15 +46,12 @@
                     <span>Inicio</span></a>
                     <hr class="sidebar-divider">
             </li>
-            <div sec:authorize="hasAuthority('ROLE_ADMIN')">
-                This content is only shown to administrators.
-                <li class="nav-item active">
-                    <a class="nav-link" href="/productos">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Productos</span></a>
-                        <hr class="sidebar-divider">
-                    </li>
-            </div>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
+                <a class="nav-link" href="/productos">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Productos</span></a>
+                    <hr class="sidebar-divider">
+                </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/pedidos">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -65,6 +62,11 @@
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Mapa</span></a>
+                    <hr class="sidebar-divider">
+            </li><li class="nav-item active">
+                <a class="nav-link" href="/vendedores">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Vendedores</span></a>
                     <hr class="sidebar-divider">
             </li>
         </ul>
