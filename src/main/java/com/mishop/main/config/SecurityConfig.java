@@ -2,15 +2,13 @@ package com.mishop.main.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
-import javax.sql.DataSource;
 
 
 @Configuration
@@ -22,18 +20,13 @@ public class SecurityConfig{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
         .authorizeHttpRequests()
-            .requestMatchers ("/home", "/index", "/registro", "**css/**","**js/**","**img/**","/foto-comentario").permitAll()
+            .requestMatchers ("/home", "/index", "/registro", "**css/**","**js/**", "/api/usuario/new/").permitAll()
             .requestMatchers( "/registro", "/verificacion", "/login",
                             "/css/**","/js/**","/img/**").permitAll()
             .requestMatchers("/productos").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
-        .formLogin()
-            .usernameParameter("username")
-            .passwordParameter("password")
-            .loginPage("/login")
-            .defaultSuccessUrl("/inicio", true)
-            .permitAll();
+            .formLogin();
 
 
         return http.build();
@@ -51,8 +44,8 @@ public class SecurityConfig{
     
 
     @Bean
-    UserDetailsManager users(DataSource dataSource, PasswordEncoder encoder) {
-	    return new JdbcUserDetailsManager(dataSource);
+    UserDetailsService userDetailsService() {
+	    return new UserInfoUserDetailsService();
     }
 
     // @Bean
@@ -73,7 +66,15 @@ public class SecurityConfig{
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider authenticationProvider=new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService());
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        return authenticationProvider;
+    }
 }
 
 
