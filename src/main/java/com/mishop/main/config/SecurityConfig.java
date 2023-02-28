@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -26,10 +27,16 @@ public class SecurityConfig{
             .requestMatchers("/productos").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
-            .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/home", true)
+            .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/inicio", true)
-                .permitAll();
+                .permitAll()
+            .and()
+            .logout()
+            .invalidateHttpSession(true)
+            .clearAuthentication(true)
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/login")
+            .permitAll();
 
 
         return http.build();
