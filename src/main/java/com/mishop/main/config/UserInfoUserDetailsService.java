@@ -20,14 +20,13 @@ public class UserInfoUserDetailsService implements UserDetailsService {
     private UserInfoRepository repository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserInfo loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserInfo> userInfo = repository.findByName(username);
-        return userInfo.map(UserInfoUserDetails::new)
-                .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
-
+        return userInfo.orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
     }
 
     public String addUser(UserInfo userInfo) {
+        System.out.println(userInfo);
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
         return "user added to system ";
