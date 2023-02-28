@@ -26,7 +26,10 @@ public class SecurityConfig{
             .requestMatchers("/productos").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
-            .formLogin();
+            .formLogin().loginPage("/login")
+                .defaultSuccessUrl("/home", true)
+                .defaultSuccessUrl("/inicio", true)
+                .permitAll();
 
 
         return http.build();
