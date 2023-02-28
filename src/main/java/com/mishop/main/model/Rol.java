@@ -1,6 +1,6 @@
 package com.mishop.main.model;
 
 public enum Rol {
-    USER,
-    ADMIN
+    ROLE_USER,
+    ROLE_ADMIN
 }
