@@ -7,31 +7,30 @@
 <body>
     <div class="container-fluid" layout:fragment="contenido">
         <div class="card shadow mb-4 text-center">
-            <div class="card-header">
-                <h3>Productos</h3>
+            <div class="card-header row">
+                <div class="col-10">
+                    <h3>Productos</h3>
+                </div>
+                <div class="col-2">
+                    <a th:href="@{/vendedores/new}" type="button" class="btn btn-primary btn-user">Nuevo</a>
+                </div>
             </div>
             <div class="card-body">
                 <table id="example" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Producto</th>
-                            <th>Descripcion</th>
-                            <th>Precio</th>
-                            <th>Disponibilidad</th>
-                            <th>Imagen</th>
-                            <th>Categoria ID</th>
+                            <th>Nombre</th>
+                            <th>Correo Electrónico</th>
+                            <th>Rol</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="producto : ${productos}">
-                            <td th:text="${producto.producto_id}"></td>
-                            <td th:text="${producto.producto}"></td>
-                            <td th:text="${producto.descripcion}"></td>
-                            <td th:text="${producto.precio}"></td>
-                            <td th:text="${producto.existencia}"></td>
-                            <td th:text="${producto.imagen}"></td>
-                            <td th:text="${producto.categoria_id}"></td>
+                        <tr th:each="vendedor : ${vendedores}">
+                            <td th:text="${vendedor.id}"></td>
+                            <td th:text="${vendedor.name}"></td>
+                            <td th:text="${vendedor.email}"></td>
+                            <td th:text="${vendedor.rol}"></td>
                         </tr>
                     </tbody>
                 </table>
