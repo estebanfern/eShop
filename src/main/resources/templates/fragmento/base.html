@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
                 th:fragment="base">
 
 
@@ -46,7 +46,7 @@
                     <span>Inicio</span></a>
                     <hr class="sidebar-divider">
             </li>
-            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
+            <li class="nav-item active">
                 <a class="nav-link" href="/productos">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Productos</span></a>
@@ -58,12 +58,13 @@
                     <span>Pedido</span></a>
                     <hr class="sidebar-divider">
             </li>
-            <li class="nav-item active">
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Mapa</span></a>
                     <hr class="sidebar-divider">
-            </li><li class="nav-item active">
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
                 <a class="nav-link" href="/vendedores">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Vendedores</span></a>
