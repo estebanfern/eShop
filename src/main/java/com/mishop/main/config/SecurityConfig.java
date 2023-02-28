@@ -21,9 +21,8 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-
         .authorizeHttpRequests()
-            .requestMatchers("/", "/home", "/index", "/registro", "**css/**","**js/**","**img/**","/foto-comentario").permitAll()
+            .requestMatchers ("/home", "/index", "/registro", "**css/**","**js/**","**img/**","/foto-comentario").permitAll()
             .requestMatchers( "/registro", "/verificacion", "/login",
                             "/css/**","/js/**","/img/**").permitAll()
             .requestMatchers("/productos").hasRole("ADMIN")
@@ -49,33 +48,11 @@ public class SecurityConfig{
     //         .build();
     //     return new InMemoryUserDetailsManager(user);
     // }
-
-
-    // @Bean
-    // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    //     http
-    //         .csrf().disable()
-    //         .authorizeHttpRequests(authorize -> authorize
-    //                 .requestMatchers("/").permitAll()
-    //                 .requestMatchers("/login").permitAll()
-    //                 //.requestMatchers(HttpMethod.GET, "/api/producto/list").permitAll()
-    //                 //.requestMatchers(HttpMethod.GET, "/api/producto/{id}").permitAll()
-    //                 //.requestMatchers(HttpMethod.POST, "/api/producto/save").permitAll()
-    //                 //.requestMatchers(HttpMethod.DELETE, "/api/producto/delete/{id}").permitAll()
-    //                 //.requestMatchers(HttpMethod.GET, "/productos").hasRole("ADMIN")
-    //                 .anyRequest().authenticated() // any other request must be authenticated
-    //                 )
-    //         .formLogin(loginPanel -> loginPanel.loginPage("/login").permitAll())
-    //                 //.logout(logout -> logout.logoutUrl("/logout").permitAll())
-    //         .httpBasic();
-    //     return http.build();
-    // }
     
 
     @Bean
     UserDetailsManager users(DataSource dataSource, PasswordEncoder encoder) {
-	JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-	return users;
+	    return new JdbcUserDetailsManager(dataSource);
     }
 
     // @Bean
