@@ -3,7 +3,6 @@ package com.mishop.main.config;
 import com.mishop.main.model.UserInfo;
 import com.mishop.main.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,7 +25,6 @@ public class UserInfoUserDetailsService implements UserDetailsService {
     }
 
     public String addUser(UserInfo userInfo) {
-        System.out.println(userInfo);
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
         return "user added to system ";
