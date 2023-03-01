@@ -6,7 +6,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5435/eshop
+    url: jdbc:postgresql://localhost:5432/eshop
     username: postgres
     password: postgres
   jpa:
