@@ -6,7 +6,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/eshop
+    url: jdbc:postgresql://localhost:5435/eshop
     username: postgres
     password: postgres
   jpa:
@@ -21,4 +21,14 @@ spring:
     view:
       prefix: /templates
       suffix: .html
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          cache-public: true
+          max-age: 365D
+      chain:
+        strategy:
+          content:
+            enabled: true
 
