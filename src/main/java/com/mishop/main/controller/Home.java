@@ -21,4 +21,9 @@ public class Home {
     public String pedidos(){
         return "pedidos";
     }
+
+    @GetMapping("/mapa")
+    public String mapa(){
+        return "mapa";
+    }
 }
