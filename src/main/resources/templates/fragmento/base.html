@@ -32,59 +32,98 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Titulo de la barra lateral -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <span class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </span>
-                <div class="sidebar-brand-text mx-3">SB Admin</div>
+                <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
+                <div class="sidebar-brand-text mx-3">MIShop</div>
             </a>
             <!-- Divididor -->
             <hr class="sidebar-divider my-0">
             <!-- Items del navbar -->
-            <li class="nav-item active">
+            <!-- Items de inicio -->
+            <li class="nav-item">
                 <a class="nav-link" href="/inicio">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-chart-area"></i>
                     <span>Inicio</span></a>
-                    <hr class="sidebar-divider">
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/productos">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Productos</span></a>
-                    <hr class="sidebar-divider">
-                </li>
-            <li class="nav-item active">
+            <!-- Items de pedidos -->
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Ver
+            </div>
+            <li class="nav-item">
                 <a class="nav-link" href="/pedidos">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Pedido</span></a>
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Pedidos</span></a>
+                </li>
+                <!-- Items de clientes -->
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
+                    <a class="nav-link" href="/mapa">
+                        <i class="fas fa-fw fa-map-marked"></i>
+                        <span>Mapa</span></a>
+                    </li>
                     <hr class="sidebar-divider">
+                    <!-- Items de productos -->
+                    <div class="sidebar-heading">
+                        Administrar
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="fas fa-fw fa-industry"></i>
+                            <span>Inventario</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Sección de Inventario:</h6>
+                                <a class="collapse-item" href="/productos">Productos</a>
+                                <a class="collapse-item" href="cards.html">Categorías</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item">
+                        <a class="nav-link" href="/vendedores">
+                            <i class="fas fa-fw fa-user-circle"></i>
+                            <span>Vendedores</span></a>
+                <hr class="sidebar-divider">
             </li>
-            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Mapa</span></a>
-                    <hr class="sidebar-divider">
-            </li>
-            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active">
-                <a class="nav-link" href="/vendedores">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Vendedores</span></a>
-                    <hr class="sidebar-divider">
-            </li>
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
         </ul>
-
+        
         <!-- Contenedor fuera de la barra lateral -->
         <div id="content-wrapper" class="d-flex flex-column">
-
+            
             <!-- Barra de arriba -->
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
-                    </button>
-
-                    <ul class="navbar-nav ml-auto">
+                                </button>
+                                
+                                <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" sec:authentication="name"></span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Configuraciones
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" th:href="@{/logout}" id="userDropdown" role="button" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar Sesión
+                                </a>
+                            </div>
+                        </li>
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link" th:href="@{/logout}" id="userDropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Cerrar Sesion</span>
@@ -94,7 +133,7 @@
                 </nav>
 
                 <!-- Aqui va el contenido de tu pagina -->
-                <div class="container" layout:fragment="contenido">
+                <div class="container-fluid" layout:fragment="contenido">
 
                     
 
