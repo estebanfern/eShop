@@ -20,12 +20,12 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-        .authorizeHttpRequests()//.anyRequest().permitAll();
-            .requestMatchers ("/home", "/index", "/registro", "**css/**","**js/**", "/api/usuario/new/").permitAll()
-            .requestMatchers( "/registro", "/verificacion", "/login", "/vendor/**", "**vendor/**","**favicon.ico**",
-                            "/css/**","/js/**","/img/**").permitAll()
-            .requestMatchers("/productos").hasRole("ADMIN")
-            .anyRequest().authenticated()
+        .authorizeHttpRequests().anyRequest().permitAll()
+            // .requestMatchers ("/home", "/index", "/registro", "**css/**","**js/**", "/api/usuario/new/", "**api**").permitAll()
+            // .requestMatchers( "/registro", "/verificacion", "/login", "/vendor/**", "**vendor/**","**favicon.ico**",
+            //                 "/css/**","/js/**","/img/**").permitAll()
+            // .requestMatchers("/productos").hasRole("ADMIN")
+            // .anyRequest().authenticated()
             .and()
             .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/inicio", true)
