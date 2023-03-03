@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragmento/base::base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container-fluid" layout:fragment="contenido">
+        <div class="card shadow mb-4 text-center">
+            <div class="card-header">
+                <h3>Añadir producto</h3>
+            </div>
+            <div class="card-body">
+                <form class="producto" th:action="@{/productos/new}" th:object="${producto}" method="post">
+                    <div class="form-group">
+                        <label for="nombre" class="font-weight-bold">Nombre</label>
+                        <input aria-describedby="nombreHelp" th:field="*{producto}" name="nombre" id="nombre" class="form-control" type="text" />
+                        <small id="nombreHelp" class="form-text text-muted">Nombre del producto.</small>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
