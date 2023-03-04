@@ -54,6 +54,7 @@
     - [ ] Cantidad de existencia
     
 - [ ] Vista Carrito
+    - [x] Base del carrito.
     - [ ] Agregar productos al carrito.
     - [ ] Eliminar productos del carrito.
     - [ ] Ver productos del carrito.
@@ -62,6 +63,7 @@
     - [ ] Cargar el carrito a un pedido.
 
 - [ ] Vista Detalle Pedidos
+    - [ ] Base del detalle de pedidos.
     - [ ] Ver los detalles del pedido.
         - [ ] Ver el estado del pedido.
         - [ ] Ver el total del pedido.
