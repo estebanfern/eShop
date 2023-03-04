@@ -9,7 +9,11 @@
         <!-- Header productos -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Productos</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Ver Carrito</button>
+            
+            <div>
+                <a th:href="@{/productos/new}" type="button" class="btn btn-primary btn-user">Nuevo Producto</a>
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Ver Carrito</button>
+            </div>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
             
         </div>
@@ -65,6 +69,9 @@
                                 </a>
                                 <a th:href="@{/productos/delete/{id}(id=${producto.producto_id})}" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i>
+                                </a>
+                                <a th:href="@{/productos/carrito/{id}(id=${producto.producto_id})}" class="btn btn-success btn-sm">
+                                    <i class="fas fa-plus"></i>
                                 </a>
                             </td>
                         </tr>
