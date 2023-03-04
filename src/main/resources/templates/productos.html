@@ -37,15 +37,6 @@
                             <td th:text="${producto.imagen}"></td>
                             <td th:text="${producto.categoria_id}"></td>
                             <td>
-                                <div class="dropdown no-arrow">
-                                    <button class="btn btn-primary dropdown btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-caret-square-down" aria-hidden="true"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" th:href="@{/productos/editar/{id}(id=${producto.producto_id})}">Editar</a>
-                                        <a class="dropdown-item" th:href="@{/productos/eliminar/{id}(id=${producto.producto_id})}">Eliminar</a>
-                                    </div>
-                                </div>
                                 <a th:href="@{/productos/edit/{id}(id=${producto.producto_id})}" class="btn btn-primary btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
