@@ -6,38 +6,141 @@
 </head>
 <body>
     <div class="container-fluid" layout:fragment="contenido">
+        <style>body{background:#eee}.ratings i{font-size: 16px;color: red}.strike-text{color: red;text-decoration: line-through}.product-image{width: 50%}.dot{height: 7px;width: 7px;margin-left: 6px;margin-right: 6px;margin-top: 3px;background-color: blue;border-radius: 50%;display: inline-block}.spec-1{color: #938787;font-size: 15px}h5{font-weight: 400}.para{font-size: 16px}</style>
         <!-- Header productos -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Productos</h1>
             
             <div>
                 <a th:href="@{/productos/new}" type="button" class="btn btn-primary btn-user">Nuevo Producto</a>
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Ver Carrito</button>
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#CarritoModal">Ver Carrito</button>
             </div>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
             
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="CarritoModal" tabindex="-1" role="dialog" aria-labelledby="CarritoModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLongTitle">Carrito</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    
+                    <!-- Lista de productos -->
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>Iphone 4</h5>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="sm-1">Gs1.500.000</h4>
+                            </div>
+                            <button class="btn btn-primary btn-md" type="button">Detalles</button>
+                    
+                        </div>
+                    </div>
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1" ><img class="img-fluid img-responsive rounded product-image" src="https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>Iphone 4</h5>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="sm-1">Gs1.500.000</h4>
+                            </div>
+                            <button class="btn btn-primary btn-md" type="button">Detalles</button>
+                    
+                        </div>
+                    </div>
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1" ><img class="img-fluid img-responsive rounded product-image" src="https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>Iphone 4</h5>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="sm-1">Gs1.500.000</h4>
+                            </div>
+                            <button class="btn btn-primary btn-md" type="button">Detalles</button>
+                    
+                        </div>
+                    </div>
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1" ><img class="img-fluid img-responsive rounded product-image" src="https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>Iphone 4</h5>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="sm-1">Gs1.500.000</h4>
+                            </div>
+                            <button class="btn btn-primary btn-md" type="button">Detalles</button>
+                    
+                        </div>
+                    </div>
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1" ><img class="img-fluid img-responsive rounded product-image" src="https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>Iphone 4</h5>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="sm-1">Gs1.500.000</h4>
+                            </div>
+                            <button class="btn btn-primary btn-md" type="button">Detalles</button>
+                    
+                        </div>
+                    </div>
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1" ><img class="img-fluid img-responsive rounded product-image" src="https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>Iphone 4</h5>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="sm-1">Gs1.500.000</h4>
+                            </div>
+                            <button class="btn btn-primary btn-md" type="button">Detalles</button>
+                    
+                        </div>
+                    </div>
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1" ><img class="img-fluid img-responsive rounded product-image" src="https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"></div>
+                        <div class="col-md-6 mt-1">
+                            <h5>Iphone 4</h5>
+                            <p class="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br><br></p>
+                        </div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="sm-1">Gs1.500.000</h4>
+                            </div>
+                            <button class="btn btn-primary btn-md" type="button">Detalles</button>
+                    
+                        </div>
+                    </div>
+                    
                 </div>
+
+
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-warning">Editar Carrito</button>
+                  <button type="button" class="btn btn-primary">Ingresar Pedido</button>
                 </div>
               </div>
             </div>
           </div>
-
 
         <div class="card shadow mb-4 text-center">
             <div class="card-body">
