@@ -47,6 +47,7 @@
     - [x] paginar
 
 - [ ] Form Detalles del producto (Este form será utilizado para ver, editar y cargar un nuevo producto)
+    - [x] Base del form
     - [ ] Nombre del producto
     - [ ] Descripción
     - [ ] Precio
@@ -63,7 +64,7 @@
     - [ ] Cargar el carrito a un pedido.
 
 - [ ] Vista Detalle Pedidos
-    - [x] Base del detalle de pedidos.
+    - [ ] Base del detalle de pedidos.
     - [ ] Ver los detalles del pedido.
         - [ ] Ver el estado del pedido.
         - [ ] Ver el total del pedido.
