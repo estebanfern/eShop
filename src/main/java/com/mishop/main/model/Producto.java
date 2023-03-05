@@ -13,7 +13,7 @@ public class Producto implements Serializable {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer producto_id;
     
-    private String producto;
+    private String nombre;
     private String descripcion;
     private Integer precio;
     private Integer existencia;
@@ -22,7 +22,7 @@ public class Producto implements Serializable {
 
     public Producto(Integer producto_id, String producto, String descripcion, Integer precio, Integer existencia, String imagen, Integer categoria_id) {
         this.producto_id = producto_id;
-        this.producto = producto;
+        this.nombre = producto;
         this.descripcion = descripcion;
         this.precio = precio;
         this.existencia = existencia;
@@ -31,7 +31,7 @@ public class Producto implements Serializable {
     }
 
     public Producto(String producto, String descripcion, Integer precio, Integer existencia, String imagen, Integer categoria_id) {
-        this.producto = producto;
+        this.nombre = producto;
         this.descripcion = descripcion;
         this.precio = precio;
         this.existencia = existencia;
@@ -47,12 +47,12 @@ public class Producto implements Serializable {
         this.producto_id = producto_id;
     }
 
-    public String getProducto() {
-        return producto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setProducto(String producto) {
-        this.producto = producto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {

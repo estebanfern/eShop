@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragmento/base::base}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container-fluid" layout:fragment="contenido">
+        <div class="card shadow mb-4 text-center">
+            <div class="card-header">
+                <h3>Añadir producto</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <form class="user" th:action="@{/productos/save}" th:object="${producto}" method="post">
+                        <input type="number" name="producto_id" id="producto_id" th:field="*{producto_id}" hidden>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="productName">Nombre del producto</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" placeholder="Nombre del producto">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="sel1">Categoria</label>
+                                <select class="form-control form-select" id="categoria_id" th:field="*{categoria_id}" name="categoria_id">
+                                    <option th:each="categoria : ${categorias}" th:value="${categoria.categoria_id}"
+                                        th:selected="${producto.categoria_id == categoria.categoria_id}" th:text="${categoria.categoria}" >
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción</label>
+                            <textarea class="form-control" rows="5" name="descripcion" th:field="*{descripcion}" id="descripcion"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="precio">Precio</label>
+                                <input type="number" class="form-control" name="precio" id="precio" th:field="*{precio}" placeholder="Precio del producto">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Existencia</label>
+                                <input type="number" class="form-control" name="existencia" id="existencia" th:field="*{existencia}" placeholder="Cantidad en inventario">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="imagen">Path Imagen</label>
+                            <input class="form-control" type="text" name="imagen" id="imagen" th:field="*{imagen}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cargar Producto</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
