@@ -41,10 +41,10 @@
               </div>
             </div>
           </div>
-
-        <div class="card shadow mb-4 text-center">
-            <div class="card-body">
-                <table id="productos" class="table table-bordered table-striped table-hover responsive nowrap">
+          
+          <div class="card shadow mb-4 text-center">
+              <div class="card-body">
+                  <table id="productos" class="table table-bordered table-striped table-hover responsive nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -54,7 +54,7 @@
                             <th>Disponibilidad</th>
                             <th>Imagen</th>
                             <th>Categoria ID</th>
-                            <th>Acciones</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,9 +67,12 @@
                             <td th:text="${producto.imagen}"></td>
                             <td th:text="${producto.categoria_id}"></td>
                             <td>
-                                <a th:href="@{/productos/edit/{id}(id=${producto.producto_id})}" class="btn btn-primary btn-sm">
+                                <button class="btn btn-info btn-sm" th:attr="onclick=|addProduct('${producto.producto_id}')|">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button th:href="@{/productos/edit/{id}(id=${producto.producto_id})}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#DetalleProducto">
                                     <i class="fas fa-edit"></i>
-                                </a>
+                                </button>
                                 <a th:href="@{/productos/delete/{id}(id=${producto.producto_id})}" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </a>
@@ -80,6 +83,66 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <!-- Detalle pedidos modal -->
+                <div class="modal fade" id="DetalleProducto" tabindex="-1" role="dialog" aria-labelledby="DetalleProductoTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Detalles del producto</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body" id="DetalleProductoBody">
+                            
+                            <div class="container">
+                                <form>
+                                    <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Nombre del producto</label>
+                                        <input type="text" class="form-control" id="nombreProducto" placeholder="Nombre del producto">
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="sel1">Categoria</label>
+                                        <select class="form-control" id="sel1">
+                                            <option>Telefono</option>
+                                            <option>Case</option>
+                                            <option>Electronica General</option>
+                                            <option>Chucheria</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripción</label>
+                                        <textarea class="form-control" rows="5" id="descripcion"></textarea>
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label for="inputEmail4">Precio</label>
+                                          <input type="number" class="form-control" id="nombreProducto" placeholder="Precio del producto">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label for="inputEmail4">Existencia</label>
+                                          <input type="number" class="form-control" id="nombreProducto" placeholder="Cantidad en inventario">
+                                        </div>
+                                      </div>
+                                    <button type="submit" class="btn btn-primary">Cargar Producto</button>
+                                  </form>
+
+                            </div>
+
+                        </div>
+        
+        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn btn-warning">Editar Producto</button>
+                          <button type="button" class="btn btn-primary">Cargar a carrito</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
         <style src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"></style>

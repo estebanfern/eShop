@@ -63,7 +63,7 @@
     - [ ] Cargar el carrito a un pedido.
 
 - [ ] Vista Detalle Pedidos
-    - [ ] Base del detalle de pedidos.
+    - [x] Base del detalle de pedidos.
     - [ ] Ver los detalles del pedido.
         - [ ] Ver el estado del pedido.
         - [ ] Ver el total del pedido.
