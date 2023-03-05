@@ -6,40 +6,12 @@
 </head>
 <body>
     <div class="container-fluid" layout:fragment="contenido">
-        <style>
-          .myAlert-bottom{
-            display: none;
-            position: fixed;
-            bottom: unset;
-            left: unset;
-            width: 20%;
-            height: 5%;
-            top: 10px;
-            right: 10px;
-            transform: unset;
-        }
-
-        div.fullscreen {
-          position: absolute;
-          width:100%; 
-          height:960px; 
-          top: 0; 
-          left: 0; 
-          background-color: lightblue;
-        }
-
-        .alert{
-            display: none;
-        }
-        </style>
-        <style>body{background:#eee}.ratings i{font-size: 16px;color: red}.strike-text{color: red;text-decoration: line-through}.product-image{width: 50%}.dot{height: 7px;width: 7px;margin-left: 6px;margin-right: 6px;margin-top: 3px;background-color: blue;border-radius: 50%;display: inline-block}.spec-1{color: #938787;font-size: 15px}h5{font-weight: 400}.para{font-size: 16px}</style>
         <!-- Header productos -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Productos</h1>
             
             <div>
                 <a th:href="@{/productos/save}" type="button" class="btn btn-primary btn-user">Nuevo Producto</a>
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#CarritoModal">Ver Carrito</button>
             </div>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
             
@@ -52,38 +24,9 @@
           <strong>Producto agregado al carrito</strong>
         </div>
 
-        <div class="modal fade" id="CarritoModal" tabindex="-1" role="dialog" aria-labelledby="CarritoModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Carrito</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body text-center" id="carritoBody">
-                  <p>No se han cargado productos</p>
-                </div>
-
-
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-md-4"><p class="text-left" id="cantidadProductos">Cant. Productos:</p></div>
-                    <div class="col-md-4 ml-auto"><p class="text-left" id="precioTotal">Total:</p></div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-warning">Editar Carrito</button>
-                  <button type="button" class="btn btn-primary">Ingresar Pedido</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
           <div class="card shadow mb-4 text-center">
               <div class="card-body">
-                  <table id="productos" class="table table-bordered table-striped table-hover responsive compact dt-body-left">
+                  <table id="productos" class="table table-bordered table-striped table-hover responsive dt-body-left">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -132,7 +75,6 @@
         <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script>
         <script th:src="@{/js/datatable.js}"></script>
-        <script th:src="@{/js/carrito.js}"></script>
     </div>
 </body>
 </html>
