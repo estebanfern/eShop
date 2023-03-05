@@ -19,22 +19,26 @@ public class StorageService {
 
     private Logger logger = LoggerFactory.getLogger(StorageService.class);
 
-    private final String FOLDER_PATH = "C:\\Users\\msi\\Desktop\\eshop\\src\\main\\resources\\static\\img\\data\\";
+    private final String FULL_PATH = "C:\\Users\\msi\\Desktop\\eshop\\src\\main\\resources\\static\\img\\data\\";
 
     private final String SEMI_PATH = "C:\\Users\\msi\\Desktop\\eshop\\src\\main\\resources\\static";
 
     public String saveFile(MultipartFile file) throws IOException {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String fileName = timestamp.toInstant().toEpochMilli() + "." + StringUtils.getFilenameExtension(file.getOriginalFilename());
-        Path uploadPath = Paths.get(FOLDER_PATH);
+        Path uploadPath = Paths.get(FULL_PATH);
         Path filePath = uploadPath.resolve(fileName);
         InputStream inputStream = file.getInputStream();
         Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
         return "/img/data/" + fileName;
     }
 
-    public byte[] loadFile (String fileName) throws IOException {
-        return null;
+    public void deleteFile (String fileName) throws IOException {
+        fileName = fileName.replaceAll("/img/data/", "");
+        logger.info(fileName);
+        Path uploadPath = Paths.get(FULL_PATH);
+        Path filePath = uploadPath.resolve(fileName);
+        Files.delete(filePath);
     }
 
 }

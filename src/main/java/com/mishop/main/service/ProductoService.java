@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoService {
@@ -45,6 +46,15 @@ public class ProductoService {
         productoDTO.setImagen(storageService.saveFile(productoDTO.getImagenNativa()));
         Producto producto = productoBuilder.buildProducto(productoDTO);
         productoRepository.save(producto);
+    }
+
+    public void delete(Integer id) throws IOException {
+        Optional<Producto> producto = productoRepository.findById(id);
+        if (!producto.isPresent()){
+            throw new IllegalArgumentException("No se encuentra producto con id = " + id);
+        }
+        storageService.deleteFile(producto.get().getImagen());
+        productoRepository.deleteById(producto.get().getProducto_id());
     }
 
 }
