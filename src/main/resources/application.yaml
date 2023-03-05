@@ -32,3 +32,4 @@ spring:
           content:
             enabled: true
 
+IMG_DATA_PATH: "C:\\Users\\msi\\Desktop\\eshop\\src\\main\\resources\\static\\img\\data\\"
