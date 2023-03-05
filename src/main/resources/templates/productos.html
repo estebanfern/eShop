@@ -50,7 +50,7 @@
           
           <div class="card shadow mb-4 text-center">
               <div class="card-body">
-                  <table id="productos" class="table table-bordered table-striped table-hover responsive nowrap">
+                  <table id="productos" class="table table-bordered table-striped table-hover responsive compact">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -66,7 +66,7 @@
                     <tbody>
                         <tr th:each="producto : ${productos}">
                             <td th:text="${producto.producto_id}"></td>
-                            <td th:text="${producto.nombre}" th:id="'productoName' + ${producto.producto_id}"></td>
+                            <td th:text="${producto.nombre}" th:id="'productoName' + ${producto.producto_id}" th:data-search="${producto.nombre}"></td>
                             <td th:text="${producto.descripcion}" th:id="'productoDesc' + ${producto.producto_id}"></td>
                             
                             <td th:text="${producto.precio}" th:id="'productoPrecio' + ${producto.producto_id}"></td>
