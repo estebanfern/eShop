@@ -1,11 +1,15 @@
 package com.mishop.main.controller;
 
 import com.mishop.main.model.Producto;
+import com.mishop.main.service.CategoriaService;
 import com.mishop.main.service.ProductoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,8 +19,13 @@ import java.util.List;
 @RequestMapping("/productos")
 public class ProductoController {
 
+    Logger logger = LoggerFactory.getLogger(ProductoController.class);
+
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private CategoriaService categoriaService;
 
     @GetMapping
     public String mainPage(Model model){
@@ -25,14 +34,23 @@ public class ProductoController {
         return "productos";
     }
 
-    @GetMapping("/new")
-    public String viewNewProducto(Model model) {
-        model.addAttribute("producto", new Producto());
-        return "newProducto";
+    @GetMapping("/save/{id}")
+    public String editProducto(@PathVariable(value = "id", required = true) Integer id, Model model) {
+        model.addAttribute("producto", productoService.findById(id));
+        model.addAttribute("categorias", categoriaService.findAll());
+        return "saveProducto";
     }
 
-    @PostMapping("/new")
+    @GetMapping("/save")
+    public String newProducto(Model model) {
+        model.addAttribute("producto", new Producto());
+        model.addAttribute("categorias", categoriaService.findAll());
+        return "saveProducto";
+    }
+
+    @PostMapping("/save")
     public String saveNewProducto(Producto producto) {
+        logger.info("Producto guardado ---> " + producto);
         productoService.save(producto);
         return "redirect:/productos";
     }

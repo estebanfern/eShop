@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductoDTO {
 
-    private String producto;
+    private String nombre;
     private String descripcion;
     private Integer precio;
     private Integer existencia;
