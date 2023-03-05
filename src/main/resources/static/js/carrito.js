@@ -1,5 +1,12 @@
 function addProduct(id){
     let carrito = document.getElementById('carritoBody');
+    console.log(carrito.innerHTML)
+
+
+    if (carrito.innerHTML.includes("cargado productos")) {//Si el carrito esta vacio
+        carrito.innerHTML = "";
+        carrito.className = "modal-body";
+    }
 
     let nombreProducto = document.getElementById('productoName' + id).innerHTML;
     let descripcionProducto = document.getElementById('productoDesc' + id).innerHTML;
