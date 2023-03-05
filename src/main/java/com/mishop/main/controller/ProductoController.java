@@ -59,5 +59,11 @@ public class ProductoController {
         productoService.save(productoDTO);
         return "redirect:/productos";
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProducto(@PathVariable(value = "id", required = true)Integer id) throws IOException {
+        productoService.delete(id);
+        return "redirect:/productos?deleteSuccess";
+    }
     
 }
