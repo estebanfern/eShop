@@ -1,56 +1,40 @@
 package com.mishop.main.service;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
-import java.util.Map;
-import java.util.Optional;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.sql.Timestamp;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.mishop.main.model.FileData;
-import com.mishop.main.repository.FileDataRepository;
 
 @Service
 public class StorageService {
-    
-    
 
-    @Autowired
-    private FileDataRepository fileDataRepository;
+    private Logger logger = LoggerFactory.getLogger(StorageService.class);
 
+    private final String FOLDER_PATH = "C:\\Users\\msi\\Desktop\\eshop\\src\\main\\resources\\static\\img\\data\\";
 
-    private final String FOLDER_PATH="C:/Users/sebas/Desktop/tresHermanos/primer_proyecto/eShop/src/main/resources/files/";
-
+    private final String SEMI_PATH = "C:\\Users\\msi\\Desktop\\eshop\\src\\main\\resources\\static";
 
     public String saveFile(MultipartFile file) throws IOException {
-        
-        // Se obtienen los datos del request recibido
-        String name = file.getOriginalFilename();
-        String type = file.getContentType();
-        String filePath = FOLDER_PATH + name;
-        FileData fileData = fileDataRepository.save(new FileData(name, type, filePath));
-        
-        // Se guarda el archivo en el sistema de archivos
-        file.transferTo(new File(filePath));
-
-        if (fileData != null) {
-            return "file uploaded successfully : " + filePath;
-        } 
-        return null;
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String fileName = timestamp.toInstant().toEpochMilli() + "." + StringUtils.getFilenameExtension(file.getOriginalFilename());
+        Path uploadPath = Paths.get(FOLDER_PATH);
+        Path filePath = uploadPath.resolve(fileName);
+        InputStream inputStream = file.getInputStream();
+        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        return "/img/data/" + fileName;
     }
 
     public byte[] loadFile (String fileName) throws IOException {
-        Optional<FileData> fileData = fileDataRepository.findByName(fileName);
-        if (!fileData.isPresent()) {
-            return null;
-        }
-        String filePath = fileData.get().getFilePath();
-        byte[] images = Files.readAllBytes(new File(filePath).toPath());
-        return images;
+        return null;
     }
 
 }
