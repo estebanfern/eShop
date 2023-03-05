@@ -1,5 +1,7 @@
 package com.mishop.main.controller;
 
+import com.mishop.main.builder.ProductoBuilder;
+import com.mishop.main.dto.ProductoDTO;
 import com.mishop.main.model.Producto;
 import com.mishop.main.service.CategoriaService;
 import com.mishop.main.service.ProductoService;
@@ -22,6 +24,9 @@ public class ProductoController {
     Logger logger = LoggerFactory.getLogger(ProductoController.class);
 
     @Autowired
+    private ProductoBuilder productoBuilder;
+
+    @Autowired
     private ProductoService productoService;
 
     @Autowired
@@ -30,7 +35,8 @@ public class ProductoController {
     @GetMapping
     public String mainPage(Model model){
         List<Producto> productos = productoService.findAll();
-        model.addAttribute("productos", productos);
+        List<ProductoDTO> productosDTO = productoBuilder.buildListDTO(productos);
+        model.addAttribute("productos", productosDTO);
         return "productos";
     }
 
