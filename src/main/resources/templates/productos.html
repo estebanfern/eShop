@@ -30,11 +30,11 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Imagen</th>
                             <th>Producto</th>
                             <th>Descripcion</th>
                             <th>Precio</th>
                             <th>Disponibilidad</th>
-                            <th>Imagen</th>
                             <th>Categoria ID</th>
                             <th>Opciones</th>
                         </tr>
@@ -42,13 +42,13 @@
                     <tbody>
                         <tr th:each="producto : ${productos}">
                             <td th:text="${producto.producto_id}"></td>
+                            <td style="white-space: nowrap;">
+                              <img th:src="@{|${producto.imagen}|}" class="table-image" />  
+                            </td>
                             <td th:text="${producto.nombre}" th:id="'productoName' + ${producto.producto_id}" th:data-search="${producto.nombre}"></td>
                             <td th:text="${producto.descripcion}" th:id="'productoDesc' + ${producto.producto_id}"></td>
                             <td th:text="${producto.precioFormated}" th:id="'productoPrecio' + ${producto.producto_id}"></td>
                             <td th:text="${producto.existencia}"></td>
-                            <td style="max-width: 30%; white-space: nowrap;">
-                              <img th:src="@{|${producto.imagen}|}" class="table-image" />  
-                            </td>
                             <td th:text="${producto.categoria_id}"></td>
                             <td>
                                 <button class="btn btn-info btn-sm" th:attr="onclick=|addProduct('${producto.producto_id}')|">
