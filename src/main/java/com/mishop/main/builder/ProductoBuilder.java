@@ -19,7 +19,7 @@ public class ProductoBuilder {
         producto.setPrecio(productoDTO.getPrecio());
         producto.setExistencia(productoDTO.getExistencia());
         producto.setImagen(productoDTO.getImagen());
-        producto.setCategoria_id(productoDTO.getProducto_id());
+        producto.setCategoria_id(productoDTO.getCategoria_id());
         return producto;
     }
 
@@ -32,7 +32,7 @@ public class ProductoBuilder {
         productoDTO.setPrecio(producto.getPrecio());
         productoDTO.setExistencia(producto.getExistencia());
         productoDTO.setImagen(producto.getImagen());
-        productoDTO.setCategoria_id(producto.getProducto_id());
+        productoDTO.setCategoria_id(producto.getCategoria_id());
         productoDTO.setPrecioFormated("Gs. " + decimalFormat.format(producto.getPrecio()));
         return productoDTO;
     }

@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
                 <div class="container">
-                    <form class="user" th:action="@{/productos/save}" th:object="${producto}" method="post">
+                    <form class="user" enctype="multipart/form-data" th:action="@{/productos/save}" th:object="${producto}" method="post">
                         <input type="number" name="producto_id" id="producto_id" th:field="*{producto_id}" hidden>
                         <div class="form-row">
                             <div class="form-group col-6">
@@ -46,8 +46,8 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <label for="imagen">Path Imagen</label>
-                            <input class="form-control" type="text" name="imagen" id="imagen" th:field="*{imagen}">
+                            <label for="imagen">Imagen</label>
+                            <input class="form-control" type="file" name="imagenNativa" id="imagenNativa" accept="image/png, image/jpeg" th:field="*{imagenNativa}">
                         </div>
                         <button type="submit" class="btn btn-primary">Cargar Producto</button>
                     </form>
