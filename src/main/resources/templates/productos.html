@@ -43,7 +43,7 @@
                         <tr th:each="producto : ${productos}">
                             <td th:text="${producto.producto_id}"></td>
                             <td style="white-space: nowrap;">
-                              <img th:src="@{|${producto.imagen}|}" class="table-image" />  
+                              <img th:src="@{|${producto.imagen}|}" th:id = "'productoImage' + ${producto.producto_id}" class="table-image rounded" />  
                             </td>
                             <td th:text="${producto.nombre}" th:id="'productoName' + ${producto.producto_id}" th:data-search="${producto.nombre}"></td>
                             <td th:text="${producto.descripcion}" th:id="'productoDesc' + ${producto.producto_id}"></td>
