@@ -25,7 +25,6 @@ class Producto {
 
 
 function addProduct(id){
-    let success = document.getElementById('alert-success');
     //console.log(carrito.innerHTML)
     
     
@@ -92,9 +91,13 @@ function openCarrito (){
                     "<small class=\"text-muted\">"+producto.descripcion+"</small>"+
                     // "<p class=\"text-justify text-truncate para mb-0\">"+ producto.descripcion + "<br><br></p>" +
                 "</div>" +
-            "<div class=\"align-items-center align-content-center col-md-3 border-left mt-1\">"+
-                "<div class=\"d-flex flex-row align-items-center\">" +
+            "<div class=\"align-items-center align-content-center col-ld-3 border-left mt-1\">"+
+                "<div class=\"column align-items-center\">" +
                     "<h6 class=\"mr-1\"><strong>" + producto.precioFormatted + "</strong></h6>" + 
+                    "<div class=\"row\">" + 
+                        "<h6 class=\"mr-1\"><strong>Cantidad: 10" +   + "</strong></h6>" + 
+                        "<input type=\"number\" class=\"form-control\" id=\"cantidadProducto\" value=\"1\" min=\"1\" style=\"width: 50px;\">" +
+                    "</div>" +
             "</div>"+
         "</div>"
         carrito.innerHTML = carrito.innerHTML + dom;
