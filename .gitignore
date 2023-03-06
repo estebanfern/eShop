@@ -167,4 +167,5 @@ nbdist/
 
 #Imagenes locales
 src/main/resources/static/img/data/*
+application.yaml
 

@@ -33,8 +33,9 @@ function addProduct(id){
     let nombreProducto = document.getElementById('productoName' + id).innerHTML;
     let descripcionProducto = document.getElementById('productoDesc' + id).innerHTML;
     let precioProducto = document.getElementById('productoPrecio' + id).innerHTML;
-    
-    PRODUCTOS.push(new Producto(id, nombreProducto, descripcionProducto, precioProducto, "https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg"));
+    let imageProducto = document.getElementById('productoImage' + id).src;
+    console.log(imageProducto)
+    PRODUCTOS.push(new Producto(id, nombreProducto, descripcionProducto, precioProducto, imageProducto));
     console.log(PRODUCTOS);
     
     
@@ -80,17 +81,19 @@ function openCarrito (){
     
     PRODUCTOS.forEach(producto => {
         let dom = 
-        "<div class=\"row p-2 bg-white border rounded\" style=\"margin-top:3px;\">" +
-        "<div class=\"col-md-3 mt-1\"><img class=\"img-fluid img-responsive rounded product-image\" src=\"https://i.pinimg.com/564x/1d/89/53/1d8953b382f9fffca27523a86cff36b9.jpg\"></div> " +
-        "<div class=\"col-md-6 mt-1\">" +
-        "<h6 class=\"media-title font-weight-semibold\">"+
-            "<a data-abc=\"true\">"+producto.nombre+"</a>"+
-        "</h6>"+
-        "<p class=\"text-justify text-truncate para mb-0\">"+ producto.descripcion + "<br><br></p>" +
-        "</div>" +
-        "<div class=\"align-items-center align-content-center col-md-3 border-left mt-1\">"+
-            "<div class=\"d-flex flex-row align-items-center\">" +
-                "<h6 class=\"mr-1\">" + producto.precioFormatted + "</h6>" + 
+        "<div class=\"row bg-black border rounded\" style=\"margin-top:3px;\">" +
+            "<div class=\"col-md-3 bg-gray-400\">"+
+                "<img class=\"img-fluid rounded img-thumbnail product-image\" src=\""+ producto.imagen + "\">" +
+            "</div> " +
+                "<div class=\"col-md-6 mt-1\">" +
+                    "<h6 class=\"media-title font-weight-semibold\">"+
+                    "<a data-abc=\"true\">"+producto.nombre+"</a>"+
+                    "</h6>"+
+                    "<p class=\"text-justify text-truncate para mb-0\">"+ producto.descripcion + "<br><br></p>" +
+                "</div>" +
+            "<div class=\"align-items-center align-content-center col-md-3 border-left mt-1\">"+
+                "<div class=\"d-flex flex-row align-items-center\">" +
+                    "<h6 class=\"mr-1\">" + producto.precioFormatted + "</h6>" + 
             "</div>"+
         "</div>"
         carrito.innerHTML = carrito.innerHTML + dom;
