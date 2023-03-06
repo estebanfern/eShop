@@ -20,36 +20,6 @@ public class ProductoDTO {
     private String imagen;
     private MultipartFile imagenNativa;
     private Integer categoria_id;
+    private String categoria;
 
-    public ProductoDTO(Integer producto_id, String nombre, String descripcion, Integer precio, String precioFormated, Integer existencia, String imagen, Integer categoria_id) {
-        this.producto_id = producto_id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.precioFormated = precioFormated;
-        this.existencia = existencia;
-        this.imagen = imagen;
-        this.categoria_id = categoria_id;
-    }
-
-    public ProductoDTO(String nombre, String descripcion, Integer precio, String precioFormated, Integer existencia, MultipartFile imagenNativa, Integer categoria_id) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.precioFormated = precioFormated;
-        this.existencia = existencia;
-        this.imagenNativa = imagenNativa;
-        this.categoria_id = categoria_id;
-    }
-
-    public ProductoDTO(String nombre, String descripcion, Integer precio, String precioFormated, Integer existencia, String imagen, MultipartFile imagenNativa, Integer categoria_id) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.precioFormated = precioFormated;
-        this.existencia = existencia;
-        this.imagen = imagen;
-        this.imagenNativa = imagenNativa;
-        this.categoria_id = categoria_id;
-    }
 }

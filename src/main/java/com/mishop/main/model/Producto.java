@@ -18,7 +18,34 @@ public class Producto implements Serializable {
     private Integer precio;
     private Integer existencia;
     private String imagen;
+    @Column(nullable = false)
     private Integer categoria_id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id_categoria", insertable=false, updatable=false)
+    private Categoria categoria;
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "producto_id=" + producto_id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", existencia=" + existencia +
+                ", imagen='" + imagen + '\'' +
+                ", categoria_id=" + categoria_id +
+                ", categoria=" + categoria +
+                '}';
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Producto(Integer producto_id, String producto, String descripcion, Integer precio, Integer existencia, String imagen, Integer categoria_id) {
         this.producto_id = producto_id;

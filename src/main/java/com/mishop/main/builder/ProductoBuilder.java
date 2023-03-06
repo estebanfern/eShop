@@ -33,6 +33,7 @@ public class ProductoBuilder {
         productoDTO.setExistencia(producto.getExistencia());
         productoDTO.setImagen(producto.getImagen());
         productoDTO.setCategoria_id(producto.getCategoria_id());
+        productoDTO.setCategoria(producto.getCategoria().getCategoria());
         productoDTO.setPrecioFormated("Gs. " + decimalFormat.format(producto.getPrecio()));
         return productoDTO;
     }
