@@ -39,7 +39,6 @@ public class ProductoController {
         List<Producto> productos = productoService.findAll();
         List<ProductoDTO> productosDTO = productoBuilder.buildListDTO(productos);
         model.addAttribute("productos", productosDTO);
-        logger.info("Producto 1 --> " + productos.get(0));
         return "productos";
     }
 

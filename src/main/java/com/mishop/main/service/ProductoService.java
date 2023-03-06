@@ -42,7 +42,9 @@ public class ProductoService {
         productoRepository.save(producto);
     }
     public void save(ProductoDTO productoDTO) throws IOException {
-        productoDTO.setImagen(storageService.saveFile(productoDTO.getImagenNativa()));
+        if (StringUtils.getFilenameExtension(productoDTO.getImagenNativa().getOriginalFilename()) != null){
+            productoDTO.setImagen(storageService.saveFile(productoDTO.getImagenNativa()));
+        }
         Producto producto = productoBuilder.buildProducto(productoDTO);
         productoRepository.save(producto);
     }
