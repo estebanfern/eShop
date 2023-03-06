@@ -25,8 +25,8 @@
                             <div class="form-group col-6">
                                 <label for="sel1">Categoria</label>
                                 <select class="form-control form-select" id="categoria_id" th:field="*{categoria_id}" name="categoria_id">
-                                    <option th:each="categoria : ${categorias}" th:value="${categoria.categoria_id}"
-                                        th:selected="${producto.categoria_id == categoria.categoria_id}" th:text="${categoria.categoria}" >
+                                    <option th:each="categoria : ${categorias}" th:value="${categoria.id_categoria}"
+                                        th:selected="${producto.categoria_id == categoria.id_categoria}" th:text="${categoria.categoria}" >
                                     </option>
                                 </select>
                             </div>

@@ -23,6 +23,8 @@ import java.util.List;
 @RequestMapping("/productos")
 public class ProductoController {
 
+    Logger logger = LoggerFactory.getLogger(ProductoController.class);
+
     @Autowired
     private ProductoBuilder productoBuilder;
 
@@ -37,6 +39,7 @@ public class ProductoController {
         List<Producto> productos = productoService.findAll();
         List<ProductoDTO> productosDTO = productoBuilder.buildListDTO(productos);
         model.addAttribute("productos", productosDTO);
+        logger.info("Producto 1 --> " + productos.get(0));
         return "productos";
     }
 
