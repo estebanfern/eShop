@@ -11,7 +11,7 @@
     <div class="container-fluid" layout:fragment="contenido">
         <div class="card shadow mb-4 text-center">
             <div class="card-header">
-                <h3>Añadir producto</h3>
+                <h3 id="productTitle">Editar producto</h3>
             </div>
             <div class="card-body">
                 <div class="container">
@@ -20,7 +20,7 @@
                         <div class="form-row">
                             <div class="form-group col-6">
                                 <label for="productName">Nombre del producto</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" placeholder="Nombre del producto">
+                                <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" placeholder="Nombre del producto" required >
                             </div>
                             <div class="form-group col-6">
                                 <label for="sel1">Categoria</label>
@@ -33,21 +33,21 @@
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea class="form-control" rows="5" name="descripcion" th:field="*{descripcion}" id="descripcion"></textarea>
+                            <textarea class="form-control" rows="5" name="descripcion" th:field="*{descripcion}" id="descripcion" required ></textarea>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="precio">Precio</label>
-                                <input type="number" class="form-control" name="precio" id="precio" th:field="*{precio}" placeholder="Precio del producto">
+                                <input type="number" class="form-control" name="precio" id="precio" th:field="*{precio}" placeholder="Precio del producto" required >
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Existencia</label>
-                                <input type="number" class="form-control" name="existencia" id="existencia" th:field="*{existencia}" placeholder="Cantidad en inventario">
+                                <input type="number" class="form-control" name="existencia" id="existencia" th:field="*{existencia}" placeholder="Cantidad en inventario" required >
                             </div>
                         </div>
                         <div class="form-row">
                             <label for="imagen">Imagen</label>
-                            <input class="form-control" type="file" name="imagenNativa" id="imagenNativa" accept="image/png, image/jpeg" th:field="*{imagenNativa}">
+                            <input class="form-control" type="file" name="imagenNativa" id="imagenNativa" accept="image/png, image/jpeg" th:field="*{imagenNativa}" >
                         </div>
                         <button type="submit" class="btn btn-primary">Cargar Producto</button>
                     </form>
@@ -55,6 +55,15 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(() => {
+                var inputId = $('#producto_id');
+                if (inputId.val() === ''){
+                    $('#imagenNativa').prop('required',true);
+                    $('#productTitle').text('Añadir Producto');
+                }
+            })
+        </script>
     </div>
 </body>
 
