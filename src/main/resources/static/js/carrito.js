@@ -82,18 +82,19 @@ function openCarrito (){
     PRODUCTOS.forEach(producto => {
         let dom = 
         "<div class=\"row bg-black border rounded\" style=\"margin-top:3px;\">" +
-            "<div class=\"col-md-3 bg-gray-400\">"+
-                "<img class=\"img-fluid rounded img-thumbnail product-image\" src=\""+ producto.imagen + "\">" +
+            "<div class=\"col-md-3\">"+
+                "<img class=\"img-fluid rounded product-image\" src=\""+ producto.imagen + "\">" +
             "</div> " +
                 "<div class=\"col-md-6 mt-1\">" +
-                    "<h6 class=\"media-title font-weight-semibold\">"+
-                    "<a data-abc=\"true\">"+producto.nombre+"</a>"+
-                    "</h6>"+
-                    "<p class=\"text-justify text-truncate para mb-0\">"+ producto.descripcion + "<br><br></p>" +
+                    "<h5 class=\"media-title font-weight-semibold\">"+
+                    "<a data-abc=\"true\"><strong>"+producto.nombre+"</strong></a>"+
+                    "</h5>"+
+                    "<small class=\"text-muted\">"+producto.descripcion+"</small>"+
+                    // "<p class=\"text-justify text-truncate para mb-0\">"+ producto.descripcion + "<br><br></p>" +
                 "</div>" +
             "<div class=\"align-items-center align-content-center col-md-3 border-left mt-1\">"+
                 "<div class=\"d-flex flex-row align-items-center\">" +
-                    "<h6 class=\"mr-1\">" + producto.precioFormatted + "</h6>" + 
+                    "<h6 class=\"mr-1\"><strong>" + producto.precioFormatted + "</strong></h6>" + 
             "</div>"+
         "</div>"
         carrito.innerHTML = carrito.innerHTML + dom;
