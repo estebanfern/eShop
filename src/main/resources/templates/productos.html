@@ -8,15 +8,11 @@
     <div class="container-fluid" layout:fragment="contenido">
       <style>
         .myAlert-bottom{
-          display: none;
-          position: fixed;
-          bottom: unset;
-          left: unset;
-          width: 20%;
-          height: 5%;
-          top: 10px;
-          right: 10px;
-          transform: unset;
+            position: fixed;
+            bottom: 5px;
+            /* left:2%; */
+            right: 2%;
+            width: 30%;
       }
 
       div.fullscreen {
@@ -45,9 +41,13 @@
 
         
 
-        <div class="myAlert-bottom alert alert-success">
+        <div class="myAlert-bottom alert alert-success" id="succesAlert">
           <a href="#" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Producto agregado al carrito</strong>
+        </div>
+        <div class="myAlert-bottom alert alert-warning" id="warningAlert">
+          <a href="#" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>El producto ya está en el carrito</strong>
         </div>
 
           <div class="card shadow mb-4 text-center">

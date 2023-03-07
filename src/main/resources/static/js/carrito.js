@@ -39,15 +39,24 @@ function addProduct(id){
     let descripcionProducto = document.getElementById('productoDesc' + id).innerHTML;
     let precioProducto = document.getElementById('productoPrecio' + id).innerHTML;
     let imageProducto = document.getElementById('productoImage' + id).src;
+
+    if (id in PRODUCTOS) { //Si el producto ya esta en el carrito
+        $("#warningAlert").show();
+        setTimeout(function(){
+            $("#warningAlert").hide(); 
+        }, 2000);
+        return;
+    }
+    
+    
     PRODUCTOS[id] = (new Producto(id, nombreProducto, descripcionProducto, precioProducto, imageProducto, 1));
-    
-    
     localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
     
-    $(".myAlert-bottom").show();
+    $("#succesAlert").show();
     setTimeout(function(){
-        $(".myAlert-bottom").hide(); 
+        $("#succesAlert").hide(); 
     }, 2000);
+    calcularCantidad();
     return;
 }
 
@@ -63,12 +72,15 @@ function calcularTotal(){
 
 function calcularCantidad(){
     let cantidadProductos = document.getElementById('cantidadProductos');
+    let carritoIcon = document.getElementById('carritoIcon');
     let cantidad = 0;
     for(var key in PRODUCTOS) {
         var producto = PRODUCTOS[key];
         cantidad = cantidad + parseInt(producto.cantidad);
     };
     cantidadProductos.innerHTML = "Cant. Productos: " + cantidad;
+    carritoIcon.innerHTML = cantidad;
+
 }
 
 function openCarrito (){
