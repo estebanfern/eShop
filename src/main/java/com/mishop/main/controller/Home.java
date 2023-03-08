@@ -16,12 +16,6 @@ public class Home {
         return "login";
     }
 
-
-    @GetMapping("/pedidos")
-    public String pedidos(){
-        return "pedidos";
-    }
-
     @GetMapping("/mapa")
     public String mapa(){
         return "mapa";
