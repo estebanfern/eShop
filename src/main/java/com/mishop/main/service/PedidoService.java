@@ -28,6 +28,10 @@ public class PedidoService {
     @Autowired
     private ProductoRepository productoRepository;
 
+    public List<Pedido> listAllPedidos() {
+        return pedidoRepository.findAll();
+    }
+
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public ResponseEntity<String> createPedido(Pedido pedido, List<DetallePedido> detallesPedido) {
         Optional<Producto> producto;

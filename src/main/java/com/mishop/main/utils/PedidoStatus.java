@@ -6,5 +6,5 @@ public final class PedidoStatus {
     public static final String VERIFICADO = "VERIFICADO";
     public static final String RECHAZADO = "RECHAZADO";
     public static final String PENDIENTE_DE_ENVIO = "EN TRANSITO";
-    public static final String ÈNTREGADO = "ENTREGADO";
+    public static final String ENTREGADO = "ENTREGADO";
 }
