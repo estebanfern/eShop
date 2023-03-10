@@ -1,5 +1,6 @@
 $(document).ready(function(){
     console.log("Carrito.js loaded")
+    getProductos();
     calcularCantidad();
 });
 
@@ -65,6 +66,11 @@ function addProduct(id){
     return;
 }
 
+function getProductos(){
+    let localJson = localStorage.getItem("productosCarrito");
+    PRODUCTOS = JSON.parse(localJson);
+}
+
 function calcularTotal(){
     let precioTotal = document.getElementById('precioTotal');
     let total = 0;
@@ -84,9 +90,13 @@ function calcularCantidad(){
         cantidad = cantidad + parseInt(producto.cantidad);
     };
 
+    if (cantidad == 0) {   
+        cantidadProductos.innerHTML = "Cant. Productos: 0";
+        carritoIcon.innerHTML = "";
+        return;
+    }
 
     cantidadProductos.innerHTML = "Cant. Productos: " + cantidad;
-
     carritoIcon.innerHTML = cantidad;
 
 }
