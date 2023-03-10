@@ -1,6 +1,7 @@
 package com.mishop.main.controller;
 
 import com.mishop.main.config.UserInfoUserDetailsService;
+import com.mishop.main.service.PedidoService;
 import com.mishop.main.utils.PedidoRequest;
 import com.mishop.main.model.Pedido;
 import com.mishop.main.utils.PedidoStatus;
@@ -24,7 +25,10 @@ public class PedidoController {
     Logger logger = LoggerFactory.getLogger(PedidoController.class);
 
     @Autowired
-    UserInfoUserDetailsService userService;
+    private UserInfoUserDetailsService userService;
+
+    @Autowired
+    private PedidoService pedidoService;
 
     @GetMapping
     public String pedidos(){
@@ -33,14 +37,14 @@ public class PedidoController {
 
     @PostMapping("/save")
     @ResponseBody
-    public ResponseEntity<Pedido> savePedido(@RequestBody PedidoRequest pedidoRequest){
+    public ResponseEntity<String> savePedido(@RequestBody PedidoRequest pedidoRequest){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Pedido pedido = pedidoRequest.getPedido();
-        pedido.setId_pedido(1);
         pedido.setEstado(PedidoStatus.PENDIENTE_DE_PAGO);
         pedido.setFecha(new Date(System.currentTimeMillis()));
-        pedido.setVendedor_id(userService.loadUserByUsername(auth.getName()).getId());
-        return new ResponseEntity<>(pedido, HttpStatus.OK);
+//        pedido.setVendedor_id(userService.loadUserByUsername(auth.getName()).getId());
+        pedido.setVendedor_id(2);
+        return pedidoService.createPedido(pedido, pedidoRequest.getDetallesPedido());
     }
 
 }
