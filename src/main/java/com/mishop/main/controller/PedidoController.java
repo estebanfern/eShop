@@ -1,10 +1,12 @@
 package com.mishop.main.controller;
 
+import com.mishop.main.config.UserInfoUserDetailsService;
 import com.mishop.main.utils.PedidoRequest;
 import com.mishop.main.model.Pedido;
 import com.mishop.main.utils.PedidoStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -21,6 +23,9 @@ public class PedidoController {
 
     Logger logger = LoggerFactory.getLogger(PedidoController.class);
 
+    @Autowired
+    UserInfoUserDetailsService userService;
+
     @GetMapping
     public String pedidos(){
         return "pedidos";
@@ -34,7 +39,7 @@ public class PedidoController {
         pedido.setId_pedido(1);
         pedido.setEstado(PedidoStatus.PENDIENTE_DE_PAGO);
         pedido.setFecha(new Date(System.currentTimeMillis()));
-        pedido.setVendedor_name(auth.getName());
+        pedido.setVendedor_id(userService.loadUserByUsername(auth.getName()).getId());
         return new ResponseEntity<>(pedido, HttpStatus.OK);
     }
 

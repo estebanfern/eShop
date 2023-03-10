@@ -21,10 +21,10 @@ public class Pedido implements Serializable{
     private String metodo_pago;
     private String direccion;
     private String ubicacion_maps;
-    private String vendedor_name;
+    private Integer vendedor_id;
     private String estado;
 
-    public Pedido(Integer id_pedido, String nombre, String telefono, String ruc, Integer total, Date fecha, String metodo_pago, String direccion, String ubicacion_maps, String vendedor_name, String estado) {
+    public Pedido(Integer id_pedido, String nombre, String telefono, String ruc, Integer total, Date fecha, String metodo_pago, String direccion, String ubicacion_maps, Integer vendedor_id, String estado) {
         this.id_pedido = id_pedido;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -34,11 +34,11 @@ public class Pedido implements Serializable{
         this.metodo_pago = metodo_pago;
         this.direccion = direccion;
         this.ubicacion_maps = ubicacion_maps;
-        this.vendedor_name = vendedor_name;
+        this.vendedor_id = vendedor_id;
         this.estado = estado;
     }
 
-    public Pedido(String nombre, String telefono, String ruc, Integer total, Date fecha, String metodo_pago, String direccion, String ubicacion_maps, String vendedor_name, String estado) {
+    public Pedido(String nombre, String telefono, String ruc, Integer total, Date fecha, String metodo_pago, String direccion, String ubicacion_maps, Integer vendedor_id, String estado) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.ruc = ruc;
@@ -47,7 +47,7 @@ public class Pedido implements Serializable{
         this.metodo_pago = metodo_pago;
         this.direccion = direccion;
         this.ubicacion_maps = ubicacion_maps;
-        this.vendedor_name = vendedor_name;
+        this.vendedor_id = vendedor_id;
         this.estado = estado;
     }
 
@@ -123,12 +123,12 @@ public class Pedido implements Serializable{
         this.ubicacion_maps = ubicacion_maps;
     }
 
-    public String getVendedor_name() {
-        return vendedor_name;
+    public Integer getVendedor_id() {
+        return vendedor_id;
     }
 
-    public void setVendedor_name(String vendedor_name) {
-        this.vendedor_name = vendedor_name;
+    public void setVendedor_id(Integer vendedor_id) {
+        this.vendedor_id = vendedor_id;
     }
 
     public String getEstado() {
@@ -141,7 +141,7 @@ public class Pedido implements Serializable{
 
     @Override
     public String toString() {
-        return "Pedido{" + "pedido_id=" + id_pedido + ", nombre=" + nombre + ", telefono=" + telefono + ", ruc=" + ruc + ", total=" + total + ", fecha=" + fecha + ", metodo_pago=" + metodo_pago + ", direccion=" + direccion + ", ubicacion_maps=" + ubicacion_maps + ", vendedor_id=" + vendedor_name + ", estado=" + estado + '}';
+        return "Pedido{" + "pedido_id=" + id_pedido + ", nombre=" + nombre + ", telefono=" + telefono + ", ruc=" + ruc + ", total=" + total + ", fecha=" + fecha + ", metodo_pago=" + metodo_pago + ", direccion=" + direccion + ", ubicacion_maps=" + ubicacion_maps + ", vendedor_id=" + vendedor_id + ", estado=" + estado + '}';
     }
 
     @Override
