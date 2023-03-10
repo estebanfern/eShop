@@ -63,6 +63,7 @@ public class PedidoController {
 
     @GetMapping("/confirmar")
     public String confirmarPedido(Model model) {
+        model.addAttribute("pedido", new Pedido());
         return "confirmarPedido";
     }
 

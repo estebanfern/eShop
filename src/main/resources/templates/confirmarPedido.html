@@ -6,6 +6,26 @@
 </head>
 <body>
     <div class="container-fluid" layout:fragment="contenido">
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmación de Pedido</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Estas seguro de confirmar el pedido?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="card shadow mb-4 border-bottom-primary">
             <div class="card-header text-center mt-3">
                 <h3 class="font-weight-bold text-dark">Confirmar Pedido</h3>
@@ -17,8 +37,43 @@
                             <div class="card-header text-center">
                                 <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Datos del Cliente</h5>
                             </div>
-                            
-                      </div>
+                            <div class="form-group text-left font-weight-bold pt-3">
+                                <label for="nombre" class="ml-2">Nombre del Cliente</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido" required >
+                                <small id="nombreHelp" class="form-text text-danger d-none">Este campo es obligatorio.</small>
+                            </div>
+                            <div class="form-row text-left font-weight-bold pt-3">
+                                <div class="col-6">
+                                    <label for="ruc" class="ml-2">RUC</label>
+                                    <input type="text" class="form-control" id="ruc" name="ruc"  placeholder="RUC" required >
+                                    <small id="rucHelp" class="form-text text-danger d-none">Este campo es obligatorio.</small>
+                                </div>
+                                <div class="col-6">
+                                    <label for="telefono" class="ml-2">Telefono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="09-- --- ---" required >
+                                    <small id="telefonoHelp" class="form-text text-danger d-none">Este campo es obligatorio.</small>
+                                </div>
+                            </div>
+                            <div class="form-row text-left font-weight-bold pt-3">
+                                <div class="col-6">
+                                    <label for="metodo_pago" class="ml-2">Método de Pago</label>
+                                    <select type="text" class="form-control" id="metodo_pago" name="metodo_pago" required >
+                                        <option value="Efectivo">Efectivo</option>
+                                        <option value="Transferencia">Transferencia Bancaria</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="ubicacion_maps" class="ml-2">Ubicacion Google Maps</label>
+                                    <input type="text" class="form-control" id="ubicacion_maps" name="ubicacion_maps" placeholder="Ubicación" required >
+                                    <small id="ubicacion_mapsHelp" class="form-text text-danger d-none">Este campo es obligatorio.</small>
+                                </div>
+                            </div>
+                            <div class="form-group text-left font-weight-bold pt-3">
+                                <label for="direccion" class="ml-2">Nombre del Cliente</label>
+                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" required >
+                                <small id="direccionHelp" class="form-text text-danger d-none">Este campo es obligatorio.</small>
+                            </div>
+                        </div>
                   </div>
                 </div>
                 <div class="col-md-7 col-sm-12">
@@ -31,6 +86,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary my-3" style="width: 200px;" data-toggle="modal" data-target="#exampleModalCenter">
+                    Confirmar
+                </button>
             </div>
         </div>
         <style src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"></style>
