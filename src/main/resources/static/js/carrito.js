@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    console.log("Carrito.js loaded")
+    calcularCantidad();
+});
+
 let PRODUCTOS = {};
 let INPUT_NAME = "NumberInput";
 let LABEL_TOTAL = "Total";
@@ -78,7 +83,10 @@ function calcularCantidad(){
         var producto = PRODUCTOS[key];
         cantidad = cantidad + parseInt(producto.cantidad);
     };
+
+
     cantidadProductos.innerHTML = "Cant. Productos: " + cantidad;
+
     carritoIcon.innerHTML = cantidad;
 
 }
@@ -118,7 +126,12 @@ function openCarrito (){
                     // "<p class=\"text-justify text-truncate para mb-0\">"+ producto.descripcion + "<br><br></p>" +
                 "</div>" +
                 "<div id=\"CardRight\">" +
-                    "<h6>"+ "<strong>"+"Unitario: "+ "</strong>"+ producto.precioUnitarioFormatted+ "</h6>" + 
+                    "<div style=\"display : flex; flex-direction: row; align-items: baseline; gap: 10px;\">" + 
+                        "<h6>"+ "<strong>"+"Unitario: "+ "</strong>"+ producto.precioUnitarioFormatted+ "</h6>" + 
+                        "<button id=\"closeButton\"class=\"close\" aria-label=\"Close alert\" type=\"button\" onclick=\"deleteProduct("+ key +")\" data-close>" +
+                            "<span aria-hidden=\"true\">&times;</span>" +
+                        "</button>" +
+                    "</div>" +
                     "<h6 id=\""+ LABEL_TOTAL + producto.id+"\">"+ "<strong>"+"Total: "+ "</strong>"+ producto.precioCantidadFormatted+ "</h6>" + 
                     "<div style=\"display : flex; flex-direction: row; align-items: baseline\">" + 
                         "<label for=\"cantidadProducto\">Cantidad: </label>"+
@@ -158,4 +171,11 @@ function inputCantidadProducto(input){
     PRODUCTOS[input] = producto; //Actualiza el producto
     localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
 
+}
+
+function deleteProduct(id){
+    console.log("Se a eliminado" + id);
+    delete PRODUCTOS[id];
+    localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
+    openCarrito();
 }

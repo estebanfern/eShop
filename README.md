@@ -80,3 +80,14 @@
 - [ ] Agregar limitaciones
     - [ ] Los vendedores no pueden ver los pedidos de los demás vendedores.
     - [ ] No se puede hacer un POST con uno de los campos del FORM sin completar.
+
+
+
+### Estados De pedidos
+- [ ] Error
+- [ ] Pendiente de pago
+- [ ] Rechazado
+- [ ] En transito
+- [ ] Verificado
+- [ ] Entregado
+
