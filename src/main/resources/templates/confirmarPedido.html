@@ -11,7 +11,7 @@
                 <h3 class="font-weight-bold text-dark">Confirmar Pedido</h3>
             </div>
             <div class="card-body row">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                     <div class="card shadow mb-4 text-center">
                         <div class="card-body">
                             <div class="card-header text-center">
@@ -21,11 +21,11 @@
                       </div>
                   </div>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-7 col-sm-12">
                     <div class="card shadow mb-4 text-center">
-                        <div class="card-body">
+                        <div id="listaProductos" class="card-body">
                             <div class="card-header text-center">
-                                <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Carrito</h5>
+                                <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Lista de productos</h5>
                             </div>
         
                         </div>
@@ -54,6 +54,7 @@
             }
 
         </script>
+        <script th:src="@{/js/confirmarPedido.js}"></script>
     </div>
 </body>
 </html>

@@ -11,13 +11,14 @@ let LABEL_TOTAL = "Total";
 let guarani = Intl.NumberFormat('es-PY', { style: 'currency', currency: 'PYG' });
 
 class Producto {
-    constructor(id, nombre, descripcion, precioUnitarioFormatted, imagen, cantidad) {
+    constructor(id, nombre, descripcion, precioUnitarioFormatted, imagen, cantidad, existencia) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precioUnitarioFormatted = precioUnitarioFormatted;
         this.precioCantidadFormatted = precioUnitarioFormatted;
         this.cantidad = cantidad;
+        this.existencia = existencia;
         this.precio = Producto.formatPrice(this.precioCantidadFormatted); //Precio entero
         this.imagen = imagen
 
@@ -45,6 +46,7 @@ function addProduct(id){
     let descripcionProducto = document.getElementById('productoDesc' + id).innerHTML;
     let precioProducto = document.getElementById('productoPrecio' + id).innerHTML;
     let imageProducto = document.getElementById('productoImage' + id).src;
+    let existenciaProducto = document.getElementById('productoExistencia' + id).innerHTML;
 
     if (id in PRODUCTOS) { //Si el producto ya esta en el carrito
         $("#warningAlert").show();
@@ -55,7 +57,7 @@ function addProduct(id){
     }
     
     
-    PRODUCTOS[id] = (new Producto(id, nombreProducto, descripcionProducto, precioProducto, imageProducto, 1));
+    PRODUCTOS[id] = (new Producto(id, nombreProducto, descripcionProducto, precioProducto, imageProducto, 1, existenciaProducto));
     localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
     
     $("#succesAlert").show();
@@ -145,7 +147,7 @@ function openCarrito (){
                     "<h6 id=\""+ LABEL_TOTAL + producto.id+"\">"+ "<strong>"+"Total: "+ "</strong>"+ producto.precioCantidadFormatted+ "</h6>" + 
                     "<div style=\"display : flex; flex-direction: row; align-items: baseline\">" + 
                         "<label for=\"cantidadProducto\">Cantidad: </label>"+
-                        "<input type=\"number\" class=\"form-control form-control-sm\" id=\""+ INPUT_NAME + producto.id+"\" min=\"1\" value=\""+producto.cantidad+"\" style=\"width: 70px;\">" +
+                        "<input type=\"number\" class=\"form-control form-control-sm\" id=\""+ INPUT_NAME + producto.id+"\" min=\"1\" max = \""+producto.existencia+"\"value=\""+producto.cantidad+"\" style=\"width: 70px;\">" +
                     "</div>" +
                 "</div>" +
         "</div>"
@@ -184,7 +186,6 @@ function inputCantidadProducto(input){
 }
 
 function deleteProduct(id){
-    console.log("Se a eliminado" + id);
     delete PRODUCTOS[id];
     localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
     openCarrito();
