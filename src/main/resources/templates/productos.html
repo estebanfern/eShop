@@ -74,7 +74,7 @@
                             <td th:text="${producto.nombre}" th:id="'productoName' + ${producto.producto_id}" th:data-search="${producto.nombre}"></td>
                             <td th:text="${producto.descripcion}" th:id="'productoDesc' + ${producto.producto_id}"></td>
                             <td th:text="${producto.precioFormated}" th:id="'productoPrecio' + ${producto.producto_id}"></td>
-                            <td th:text="${producto.existencia}"></td>
+                            <td th:text="${producto.existencia}" th:id="'productoExistencia' + ${producto.producto_id}"></td>
                             <td th:text="${producto.categoria}"></td>
                             <td>
                                 <button class="btn btn-info btn-sm" th:attr="onclick=|addProduct('${producto.producto_id}')|">
