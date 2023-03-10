@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragmento/base::base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container-fluid" layout:fragment="contenido">
+        <div class="card shadow mb-4 border-bottom-primary">
+            <div class="card-header text-center mt-3">
+                <h3 class="font-weight-bold text-dark">Confirmar Pedido</h3>
+            </div>
+            <div class="card-body row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="card shadow mb-4 text-center">
+                        <div class="card-body">
+                            <div class="card-header text-center">
+                                <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Datos del Cliente</h5>
+                            </div>
+                            
+                      </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="card shadow mb-4 text-center">
+                        <div class="card-body">
+                            <div class="card-header text-center">
+                                <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Carrito</h5>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"></style>
+        <style src="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css"></style>
+        <style src="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css"></style>
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+        <script th:src="@{/js/defaultDatatable.js}"></script>
+        <script>
+            var principalTitle;
+            
+            $(document).ready(() => {
+                principalTitle = $('#categoriaFormTitle');
+            })
+
+            function editCat(id) {
+                principalTitle.text("Editar Categoria");
+                $('#id_categoria').val(id);
+                $('#categoria').val($('#categoria' + id).text());
+            }
+
+        </script>
+    </div>
+</body>
+</html>

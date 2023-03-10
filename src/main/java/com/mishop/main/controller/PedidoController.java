@@ -61,6 +61,11 @@ public class PedidoController {
         return "pedidos";
     }
 
+    @GetMapping("/confirmar")
+    public String confirmarPedido(Model model) {
+        return "confirmarPedido";
+    }
+
     @PostMapping("/save")
     @ResponseBody
     public ResponseEntity<String> savePedido(@RequestBody PedidoRequest pedidoRequest){
@@ -68,8 +73,8 @@ public class PedidoController {
         Pedido pedido = pedidoRequest.getPedido();
         pedido.setEstado(PedidoStatus.PENDIENTE_DE_PAGO);
         pedido.setFecha(new Date(System.currentTimeMillis()));
-//        pedido.setVendedor_id(userService.loadUserByUsername(auth.getName()).getId());
-        pedido.setVendedor_id(3);
+        pedido.setVendedor_id(userService.loadUserByUsername(auth.getName()).getId());
+//        pedido.setVendedor_id(3);
         return pedidoService.createPedido(pedido, pedidoRequest.getDetallesPedido());
     }
 
