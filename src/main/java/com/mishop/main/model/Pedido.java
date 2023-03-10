@@ -1,13 +1,10 @@
 package com.mishop.main.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
-
 
 @Entity
 @NoArgsConstructor
@@ -15,27 +12,25 @@ public class Pedido implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer pedido_id;
+    private Integer id_pedido;
     private String nombre;
     private String telefono;
     private String ruc;
     private Integer total;
-    private String fecha;
-    private String hora;
+    private Date fecha;
     private String metodo_pago;
     private String direccion;
     private String ubicacion_maps;
-    private String vendedor_id;
+    private Integer vendedor_id;
     private String estado;
-    
-    public Pedido(Integer pedido_id, String nombre, String telefono, String ruc, Integer total, String fecha, String hora, String metodo_pago, String direccion, String ubicacion_maps, String vendedor_id, String estado) {
-        this.pedido_id = pedido_id;
+
+    public Pedido(Integer id_pedido, String nombre, String telefono, String ruc, Integer total, Date fecha, String metodo_pago, String direccion, String ubicacion_maps, Integer vendedor_id, String estado) {
+        this.id_pedido = id_pedido;
         this.nombre = nombre;
         this.telefono = telefono;
         this.ruc = ruc;
         this.total = total;
         this.fecha = fecha;
-        this.hora = hora;
         this.metodo_pago = metodo_pago;
         this.direccion = direccion;
         this.ubicacion_maps = ubicacion_maps;
@@ -43,13 +38,12 @@ public class Pedido implements Serializable{
         this.estado = estado;
     }
 
-    public Pedido(String nombre, String telefono, String ruc, Integer total, String fecha, String hora, String metodo_pago, String direccion, String ubicacion_maps, String vendedor_id, String estado) {
+    public Pedido(String nombre, String telefono, String ruc, Integer total, Date fecha, String metodo_pago, String direccion, String ubicacion_maps, Integer vendedor_id, String estado) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.ruc = ruc;
         this.total = total;
         this.fecha = fecha;
-        this.hora = hora;
         this.metodo_pago = metodo_pago;
         this.direccion = direccion;
         this.ubicacion_maps = ubicacion_maps;
@@ -57,12 +51,12 @@ public class Pedido implements Serializable{
         this.estado = estado;
     }
 
-    public Integer getPedido_id() {
-        return pedido_id;
+    public Integer getId_pedido() {
+        return id_pedido;
     }
 
-    public void setPedido_id(Integer pedido_id) {
-        this.pedido_id = pedido_id;
+    public void setId_pedido(Integer id_pedido) {
+        this.id_pedido = id_pedido;
     }
 
     public String getNombre() {
@@ -97,20 +91,12 @@ public class Pedido implements Serializable{
         this.total = total;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
     }
 
     public String getMetodo_pago() {
@@ -137,11 +123,11 @@ public class Pedido implements Serializable{
         this.ubicacion_maps = ubicacion_maps;
     }
 
-    public String getVendedor_id() {
+    public Integer getVendedor_id() {
         return vendedor_id;
     }
 
-    public void setVendedor_id(String vendedor_id) {
+    public void setVendedor_id(Integer vendedor_id) {
         this.vendedor_id = vendedor_id;
     }
 
@@ -155,13 +141,13 @@ public class Pedido implements Serializable{
 
     @Override
     public String toString() {
-        return "Pedido{" + "pedido_id=" + pedido_id + ", nombre=" + nombre + ", telefono=" + telefono + ", ruc=" + ruc + ", total=" + total + ", fecha=" + fecha + ", hora=" + hora + ", metodo_pago=" + metodo_pago + ", direccion=" + direccion + ", ubicacion_maps=" + ubicacion_maps + ", vendedor_id=" + vendedor_id + ", estado=" + estado + '}';
+        return "Pedido{" + "pedido_id=" + id_pedido + ", nombre=" + nombre + ", telefono=" + telefono + ", ruc=" + ruc + ", total=" + total + ", fecha=" + fecha + ", metodo_pago=" + metodo_pago + ", direccion=" + direccion + ", ubicacion_maps=" + ubicacion_maps + ", vendedor_id=" + vendedor_id + ", estado=" + estado + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.pedido_id;
+        hash = 97 * hash + this.id_pedido;
         return hash;
     }
 
