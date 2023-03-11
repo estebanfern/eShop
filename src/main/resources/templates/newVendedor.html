@@ -10,17 +10,17 @@
             <div class="card-header">
                 <h3>Registrar Vendedor</h3>
             </div>
-            <div class="justify-content-center card-body">
-                <form class="user justify-content-center" th:action="@{/vendedores/new}" th:object="${user}" method="post">
-                    <div class="form-group col-md-6 col-sm-12">
+            <div class="card-body">
+                <form class="user" th:action="@{/vendedores/new}" th:object="${user}" method="post">
+                    <div class="form-group col-md-5 mx-auto">
                         <label for="name" class="form-label">Usuario</label>
                         <input type="text" th:field="${user.name}" class="form-control form-control-user" name="name" id="name" placeholder="Ingrese el nombre de usuario"/>
                     </div>
-                    <div class="form-group col-md-6 col-sm-12">
+                    <div class="form-group col-md-5 mx-auto">
                         <label for="email" class="form-label">Correo Electronico</label>
                         <input type="email" th:field="${user.email}" class="form-control form-control-user" name="email" id="email" placeholder="Ingrese el correo electronico"/>
                     </div>
-                    <div class="form-group col-md-6 col-sm-12">
+                    <div class="form-group col-md-5 mx-auto">
                         <button type="submit" class="btn btn-primary btn-user btn-block">Crear</button>
                     </div>
                 </form>

@@ -14,11 +14,19 @@ import lombok.NoArgsConstructor;
 public class Categoria implements Serializable{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer categoria_id;
+    private Integer id_categoria;
     private String categoria;
 
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "categoria_id=" + id_categoria +
+                ", categoria='" + categoria + '\'' +
+                '}';
+    }
+
     public Categoria(Integer categoria_id, String categoria) {
-        this.categoria_id = categoria_id;
+        this.id_categoria = categoria_id;
         this.categoria = categoria;
     }
 
@@ -26,12 +34,12 @@ public class Categoria implements Serializable{
         this.categoria = categoria;
     }
     
-    public Integer getCategoria_id() {
-        return categoria_id;
+    public Integer getId_categoria() {
+        return id_categoria;
     }
 
-    public void setCategoria_id(Integer categoria_id) {
-        this.categoria_id = categoria_id;
+    public void setId_categoria(Integer id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public String getCategoria() {
@@ -45,7 +53,7 @@ public class Categoria implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.categoria_id);
+        hash = 97 * hash + Objects.hashCode(this.id_categoria);
         hash = 97 * hash + Objects.hashCode(this.categoria);
         return hash;
     }
@@ -65,7 +73,7 @@ public class Categoria implements Serializable{
         if (!Objects.equals(this.categoria, other.categoria)) {
             return false;
         }
-        if (!Objects.equals(this.categoria_id, other.categoria_id)) {
+        if (!Objects.equals(this.id_categoria, other.id_categoria)) {
             return false;
         }
         return true;

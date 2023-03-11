@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragmento/base::base}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container-fluid" layout:fragment="contenido">
+        <div class="card shadow mb-4 text-center">
+            <div class="card-header">
+                <h3 id="productTitle">Editar producto</h3>
+            </div>
+            <div class="card-body">
+                    <form class="user" enctype="multipart/form-data" th:action="@{/productos/save}" th:object="${producto}" method="post">
+                        <input type="number" name="producto_id" id="producto_id" th:field="*{producto_id}" hidden>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="productName">Nombre del producto</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" placeholder="Nombre del producto" required >
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="sel1">Categoria</label>
+                                <select class="form-control form-select" id="categoria_id" th:field="*{categoria_id}" name="categoria_id">
+                                    <option th:each="categoria : ${categorias}" th:value="${categoria.id_categoria}"
+                                        th:selected="${producto.categoria_id == categoria.id_categoria}" th:text="${categoria.categoria}" >
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción</label>
+                            <textarea class="form-control" rows="5" name="descripcion" th:field="*{descripcion}" id="descripcion" required ></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="precio">Precio</label>
+                                <input type="number" class="form-control" name="precio" id="precio" th:field="*{precio}" placeholder="Precio del producto" required >
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputEmail4">Existencia</label>
+                                <input type="number" class="form-control" name="existencia" id="existencia" th:field="*{existencia}" placeholder="Cantidad en inventario" required >
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="imagen">Imagen</label>
+                                <input class="form-control form-control-file" type="file" name="imagenNativa" id="imagenNativa" accept="image/png, image/jpeg" th:field="*{imagenNativa}" >
+                                <input type="text" name="imagen" id="imagen" th:field="*{imagen}" hidden >
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Cargar Producto</button>
+                    </form>
+
+            </div>
+        </div>
+        <script>
+            $(document).ready(() => {
+                var inputId = $('#producto_id');
+                if (inputId.val() === ''){
+                    $('#imagenNativa').prop('required',true);
+                    $('#productTitle').text('Añadir Producto');
+                }
+            })
+        </script>
+    </div>
+</body>
+
+</html>

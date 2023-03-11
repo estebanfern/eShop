@@ -164,3 +164,7 @@ nbdist/
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,visualstudiocode,netbeans,maven,java
+
+#Imagenes locales
+src/main/resources/static/img/data/*
+application.yaml

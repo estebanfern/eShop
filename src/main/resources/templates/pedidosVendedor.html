@@ -14,7 +14,7 @@
 
         <div class="card shadow mb-0 text-center"> 
             <div class="card-body">
-                <table id="dataTable" class="table table-bordered" style="width:100%;">
+                <table id="TablaPedidos" class="table table-bordered" style="width:100%;">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -24,8 +24,7 @@
                             <th>Estado</th>
                             <th>Metodo de pago</th>
                             <th>Fecha</th>
-                            <th sec:authorize="hasRole('ROLE_ADMIN')">Vendedor</th>
-                            <th>Visualizar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,12 +36,7 @@
                             <td><span th:text="${pedido.estado}" th:classappend="${status.get(pedido.estado)}"></span></td>
                             <td th:text="${pedido.metodo_pago}"></td>
                             <td th:text="${pedido.fecha}"></td>
-                            <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${vendedores.get(pedido.vendedor_id)}"></td>
-                            <td>
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </td>                            
+                            <td th:text="Acciones"></td>                            
                         </tr>
                     </tbody>
                 </table>
@@ -51,13 +45,7 @@
             </div>
 
         </div>
-    <style src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"></style>
-    <style src="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css"></style>
-    <style src="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css"></style>
-    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-    <script th:src="@{/js/defaultDatatable.js}"></script>
+
     </div>
 </body>
 </html>
