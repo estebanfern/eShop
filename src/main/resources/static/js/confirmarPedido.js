@@ -48,27 +48,21 @@ function cargarCardBody (){
             </div>
         </div>`;
         listaProductos.innerHTML += dom;
-        inputs.push(INPUT + producto.id);
+        inputs.push(producto.id);
     }
-    // inputs.forEach(input => { //Agrega los event listeners a los inputs
-    //     document.getElementById(INPUT+input).addEventListener('click', () => { //Agrega el event listener
-    //         inputCantidadProducto(input); 
-    //     });
-    // });
-    // inputs.forEach(input => { //Agrega los event listeners a los inputs
-    //     document.getElementById(INPUT+input).addEventListener('change', () => { //Agrega el event listener
-    //         inputCantidadProducto(input); 
-    //     });
-    // });
+    console.log(inputs)
+    inputs.forEach(input => { //Agrega los event listeners a los inputs
+        document.getElementById(INPUT + input).addEventListener('click', () => { //Agrega el event listener
+            eventInputChange(input); 
+        });
+    });
+    inputs.forEach(input => { //Agrega los event listeners a los inputs
+        document.getElementById(INPUT + input).addEventListener('change', () => { //Agrega el event listener
+            eventInputChange(input); 
+        });
+    });
     setCantidadProductos();
     setTotalPrecioProductos();
-}
-
-function eventCantidadProducto(input){
-    let id = input.substring(INPUT.length);
-    let cantidad = document.getElementById(input).value;
-    let producto = PRODUCTOS[id];
-    producto.cantidad = cantidad;
 }
 
 function setCantidadProductos(){
@@ -92,6 +86,17 @@ function setTotalPrecioProductos(){
     let precioTotal = document.getElementById('costoTotal');
     let total = calcularTotal();
     precioTotal.innerHTML = total;
+}
+
+function eventInputChange(input){
+    var inputElement = document.getElementById(INPUT+input);
+    console.log(INPUT);
+    console.log(inputElement);
+    var labelTotal = document.getElementById(LABEL_TOTAL+input);
+    let total = changeCantidadProducto(input, inputElement);
+    labelTotal.innerHTML =  "<strong>"+"Total: "+ "</strong>"+ total //Actualiza el label total
+    setCantidadProductos();
+    setTotalPrecioProductos();
 }
 
 function eliminarProducto (id){
