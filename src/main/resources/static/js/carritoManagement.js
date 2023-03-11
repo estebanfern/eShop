@@ -46,10 +46,19 @@ function addProduct(id){
     let imageProducto = document.getElementById('productoImage' + id).src;
     let existenciaProducto = document.getElementById('productoExistencia' + id).innerHTML;
 
+    console.log(PRODUCTOS)
     if (id in PRODUCTOS) { //Si el producto ya esta en el carrito
         $("#warningAlert").show();
         setTimeout(function(){
             $("#warningAlert").hide(); 
+        }, 2000);
+        return;
+    }
+
+    if (existenciaProducto == 0) { //Si el producto no tiene existencia
+        $("#inventarioAlert").show();
+        setTimeout(function(){
+            $("#inventarioAlert").hide();
         }, 2000);
         return;
     }
@@ -67,8 +76,11 @@ function addProduct(id){
 }
 
 function getProductos(){
-    console.log("getProductos() carrito");
+    PRODUCTOS = {}; //Resetea el array
     let localJson = localStorage.getItem("productosCarrito");
+    if (localJson == null) {
+        return;
+    }
     PRODUCTOS = JSON.parse(localJson);
 }
 
@@ -146,6 +158,9 @@ function doPedido() {
         data : JSON.stringify({"pedido" : pedido, "detallesPedido" : detallesPedido}),
         success : function(result) {
             window.location.href = "/pedidos";
+            PEDIDOS = {};
+            cleanLocalFile();
+            
         },
         error : function(response) {
             console.log(response)
@@ -167,3 +182,7 @@ function validClienteForm(fields) {
     return res;
 }
 
+
+function cleanLocalFile (){
+    localStorage.removeItem("productosCarrito");
+}

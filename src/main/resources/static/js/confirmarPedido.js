@@ -69,8 +69,6 @@ function setCantidadProductos(){
     let cantidadProductos = document.getElementById('productosTotal');
     let carritoIcon = document.getElementById('carritoIcon');
     let cantidad = calcularCantidad();
-    console.log()
-    console.log("Cantidad: " + cantidad);
 
     if (cantidad == 0) {   
         cantidadProductos.innerHTML = "0";
@@ -90,8 +88,6 @@ function setTotalPrecioProductos(){
 
 function eventInputChange(input){
     var inputElement = document.getElementById(INPUT+input);
-    console.log(INPUT);
-    console.log(inputElement);
     var labelTotal = document.getElementById(LABEL_TOTAL+input);
     let total = changeCantidadProducto(input, inputElement);
     labelTotal.innerHTML =  "<strong>"+"Total: "+ "</strong>"+ total //Actualiza el label total
@@ -101,6 +97,5 @@ function eventInputChange(input){
 
 function eliminarProducto (id){
     deleteItem(id);
-    localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
     cargarCardBody();
 }
