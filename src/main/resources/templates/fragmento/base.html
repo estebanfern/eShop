@@ -11,6 +11,8 @@
     <meta name="author" content="">
 
     <title>MIShop</title>
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/img/logo32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/img/logo16x16.png}">
 
     <!-- Custom fonts for this template-->
     <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -31,14 +33,11 @@
             h5{font-weight: 400}.para{font-size: 16px} </style>
     <style>
         #CardRight{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             border-left-style: solid;
             border-width: 1px;
             padding-left: 1%;
-            margin-top: 1%;
-            margin-bottom: 1%;
+            margin-top: 0.5%;
+            margin-bottom: 0.5%;
             /* background-color : black; */
         }
 
@@ -46,6 +45,9 @@
             color: rgb(195, 7, 7);
         }
     </style>
+
+    <script th:src="@{/js/carritoManagement.js}"></script>
+    <script th:src="@{/js/carrito.js}"></script>
 
 </head>
 
@@ -57,7 +59,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Titulo de la barra lateral -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <!-- <img class="img-profile rounded-circle" src="img/undraw_profile.svg"> -->
+                <img class="img-profile rounded-circle" th:src="@{/img/logo45x45.png}"> 
                 <div class="sidebar-brand-text mx-3">MIShop</div>
             </a>
             <!-- Divididor -->
@@ -255,7 +257,6 @@
     <!-- Page level custom scripts -->
     <!-- <script th:src="@{/js/demo/chart-area-demo.js}"></script> -->
     <!-- <script th:src="@{/js/demo/chart-pie-demo.js}"></script> -->
-    <script th:src="@{/js/carrito.js}"></script>
 
 </body>
 

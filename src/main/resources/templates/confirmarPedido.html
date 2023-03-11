@@ -33,10 +33,10 @@
             <div class="card-body row">
                 <div class="col-md-5 col-sm-12">
                     <div class="card shadow mb-4 text-center">
+                        <div class="card-header text-center">
+                            <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Datos del Cliente</h5>
+                        </div>
                         <div class="card-body">
-                            <div class="card-header text-center">
-                                <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Datos del Cliente</h5>
-                            </div>
                             <div class="form-row text-left font-weight-bold pt-3">
                                 <div class="col-12">
                                     <label for="nombre" class="ml-2">Nombre del Cliente</label>
@@ -82,12 +82,25 @@
                 </div>
                 <div class="col-md-7 col-sm-12">
                     <div class="card shadow mb-4 text-center">
-                        <div id="listaProductos" class="card-body">
-                            <div class="card-header text-center">
-                                <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Lista de productos</h5>
-                            </div>
-        
+                        <div class="card-header text-center">
+                            <h5 class="font-weight-bold text-dark" id="categoriaFormTitle">Lista de productos</h5>
                         </div>
+                        <div class="card-body">
+                            <!-- La lista de productos van aquí -->
+                            <div id="listaProductos" class = "container-fluid scroll" style="max-height: 450px; overflow-y: auto;">
+                            </div>
+
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="row align-items-center">
+                                <div class="col-6">
+                                    <h5 class="font-weight-bold text-dark">Cantidad Total: <span id="productosTotal" class="badge badge-info"></span></h5>
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="font-weight-bold text-dark" id="total">Precio Total: <span id="costoTotal" class="badge badge-success"></span></h5>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
