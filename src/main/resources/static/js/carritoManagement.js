@@ -112,3 +112,49 @@ function deleteItem(id){
     delete PRODUCTOS[id];
     localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
 }
+
+function doPedido() {
+    var fields = ["nombre", "telefono", "ruc", "direccion", "ubicacion_maps"];
+
+    if (!validClienteForm(fields)){
+        return false;
+    }
+
+    var pedido = {
+        nombre : $("#nombre").val(),
+        telefono : $("#telefono").val(),
+        ruc : $("#ruc").val(),
+        metodo_pago : $("#metodo_pago").val(),
+        direccion : $("#direccion").val(),
+        ubicacion_maps : $("#ubicacion_maps").val()
+    }
+    var detallesPedido = [];
+
+    for (var key in PRODUCTOS){
+        detallesPedido.push({
+            "pedido_id" : null,
+            "producto_id" : parseInt(key),
+            "cantidad" : parseInt(PRODUCTOS[key]["cantidad"])
+        })
+    }
+
+    var res = JSON.stringify({
+        "pedido" : pedido, 
+        "detallesPedido" : detallesPedido
+    })
+
+}
+
+function validClienteForm(fields) {
+    var res = true;
+    fields.forEach((f) => {
+        if ($("#"+f).val() === '') {
+            res = false;
+            document.getElementById(f + "Help").className = "form-text text-danger";
+        }else{
+            document.getElementById(f + "Help").className = "d-none";
+        }
+    })
+    return res;
+}
+
