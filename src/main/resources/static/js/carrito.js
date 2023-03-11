@@ -28,8 +28,10 @@ function openCarrito (){
     let localJson = localStorage.getItem("productosCarrito");
     let inputs = [];
     PRODUCTOS = JSON.parse(localJson);
-
-    if (PRODUCTOS == null) {//Si el carrito esta vacio
+    
+    setTotal();
+    setCantidad(); 
+    if (PRODUCTOS == null || Object.keys(PRODUCTOS).length === 0) {//Si el carrito esta vacio
         carrito.innerHTML = "<div class=\"modal-body text-center\">" +
                             "<p>No se han cargado productos</p>"+
                             "</div>";
@@ -93,8 +95,6 @@ function openCarrito (){
             inputCantidadProducto(input); 
         });
     });
-    setTotal();
-    setCantidad(); 
 }
 
 function inputCantidadProducto(input){
@@ -108,6 +108,5 @@ function inputCantidadProducto(input){
 
 function deleteProduct(id){
     deleteItem(id);
-    localStorage.setItem("productosCarrito", JSON.stringify(PRODUCTOS)); //Save productos carrito
     openCarrito();
 }
