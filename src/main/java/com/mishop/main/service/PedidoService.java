@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PedidoService {
@@ -30,6 +31,10 @@ public class PedidoService {
 
     public List<Pedido> listAllPedidos() {
         return pedidoRepository.findAll();
+    }
+
+    public List<Pedido> listAllPedidosOfVendedor(Integer id) {
+        return pedidoRepository.findAll().stream().filter(p -> p.getVendedor_id() == id).collect(Collectors.toList());
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)

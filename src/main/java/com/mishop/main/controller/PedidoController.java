@@ -14,12 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,16 +49,26 @@ public class PedidoController {
         css.put(PedidoStatus.VERIFICADO, "badge badge-primary");
         css.put(PedidoStatus.ENTREGADO, "badge badge-success");
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         Map<Integer, String> vendedores = new HashMap<>();
         List<UserInfo> users = userService.getAll();
+        Integer userId = null;
         for (UserInfo u : users) {
-            //if (u.getRol() == Rol.ROLE_USER) {
-            if (true) {
-                vendedores.put(u.getId(), u.getName());
+            vendedores.put(u.getId(), u.getName());
+            if (auth.getName().equals(u.getName())){
+                userId = u.getId();
             }
         }
 
-        model.addAttribute("pedidos", pedidoService.listAllPedidos());
+        List<Pedido> pedidos;
+        if (auth.getAuthorities().equals(Collections.singletonList(new SimpleGrantedAuthority(Rol.ROLE_ADMIN.name())))){
+            pedidos = pedidoService.listAllPedidos();
+        }else {
+            pedidos = pedidoService.listAllPedidosOfVendedor(userId);
+        }
+
+        model.addAttribute("pedidos", pedidos);
         model.addAttribute("status", css);
         model.addAttribute("vendedores", vendedores);
         return "pedidos";
