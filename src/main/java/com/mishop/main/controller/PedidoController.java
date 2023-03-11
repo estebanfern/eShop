@@ -50,7 +50,8 @@ public class PedidoController {
         Map<Integer, String> vendedores = new HashMap<>();
         List<UserInfo> users = userService.getAll();
         for (UserInfo u : users) {
-            if (u.getRol() == Rol.ROLE_USER) {
+            //if (u.getRol() == Rol.ROLE_USER) {
+            if (true) {
                 vendedores.put(u.getId(), u.getName());
             }
         }
@@ -77,5 +78,5 @@ public class PedidoController {
         pedido.setVendedor_id(userService.loadUserByUsername(auth.getName()).getId());
         return pedidoService.createPedido(pedido, pedidoRequest.getDetallesPedido());
     }
-    
+
 }

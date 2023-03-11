@@ -138,9 +138,18 @@ function doPedido() {
         })
     }
 
-    var res = JSON.stringify({
-        "pedido" : pedido, 
-        "detallesPedido" : detallesPedido
+
+    $.ajax({
+        type : "POST",
+        url : "/pedidos/save",
+        contentType: "application/json; charset=utf-8",
+        data : JSON.stringify({"pedido" : pedido, "detallesPedido" : detallesPedido}),
+        success : function(result) {
+            window.location.href = "/pedidos";
+        },
+        error : function(response) {
+            console.log(response)
+        }
     })
 
 }
